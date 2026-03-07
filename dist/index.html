@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Brand Sculptors | Lead-Gen Content Strategy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-primary': 'var(--bg-primary)',
+                        'bg-surface': 'var(--bg-surface)',
+                        'bg-elevated': 'var(--bg-elevated)',
+                        'border': 'var(--border)',
+                        'text-primary': 'var(--text-primary)',
+                        'text-secondary': 'var(--text-secondary)',
+                        'text-tertiary': 'var(--text-tertiary)',
+                        'accent': 'var(--accent)',
+                        'accent-hover': 'var(--accent-hover)',
+                        'accent-subtle': 'var(--accent-subtle)',
+                        'success': 'var(--success)',
+                    },
+                    fontFamily: {
+                        sans: ['"SF Pro Display"', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+                        mono: ['"SF Mono"', 'ui-monospace', '"Cascadia Code"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'apple': 'var(--apple-shadow)',
+                    },
+                    animation: {
+                        blob: "blob 15s infinite alternate",
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(40px, -60px) scale(1.15)" },
+                            "66%": { transform: "translate(-30px, 30px) scale(0.85)" },
+                            "100%": { transform: "translate(0px, 0px) scale(1)" }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+      :root {
+        --bg-primary: #F5F5F7;
+        --bg-surface: #FFFFFF;
+        --bg-elevated: #FFFFFF;
+        --border: #D2D2D7;
+        --text-primary: #1D1D1F;
+        --text-secondary: #86868B;
+        --text-tertiary: #A1A1A6;
+        --accent: #0066CC;
+        --accent-hover: #0071E3;
+        --accent-subtle: rgba(0, 102, 204, 0.08);
+        --success: #34C759;
+        --apple-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      }
+      
+      .dark {
+        --bg-primary: #000000;
+        --bg-surface: #0A0A0A;
+        --bg-elevated: #141414;
+        --border: #2A2A2E; 
+        --text-primary: #FFFFFF;
+        --text-secondary: #A1A1A6;
+        --text-tertiary: #6E6E73;
+        --accent: #2997FF;
+        --accent-hover: #0077ED;
+        --accent-subtle: rgba(41, 151, 255, 0.12);
+        --success: #30D158;
+        --apple-shadow: 0 4px 24px rgba(255,255,255,0.03);
+      }
+
+      html {
+        scroll-behavior: smooth;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color 0.4s ease, color 0.4s ease;
+      }
+    }
+    
+    @layer utilities {
+      .text-display {
+        font-size: clamp(3rem, 6vw, 5.5rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+      }
+      .text-h2 {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+      .text-h3 {
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+      }
+      .text-body {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        letter-spacing: -0.01em;
+      }
+      .text-small {
+        font-size: 0.875rem;
+      }
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+      .animation-delay-4000 {
+        animation-delay: 4s;
+      }
+    }
+
+    /* Premium Noise Texture */
+    .noise-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+    .dark .noise-bg {
+      opacity: 0.05;
+      mix-blend-mode: overlay;
+    }
+  </style>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body class="bg-bg-primary text-text-primary antialiased overflow-x-hidden relative">
+    <!-- Visual 30% Pimping: Animated Background Blobs & Noise -->
+    <div
+        class="fixed inset-0 overflow-hidden pointer-events-none z-[-1] opacity-60 dark:opacity-30 mix-blend-multiply dark:mix-blend-screen transition-opacity duration-1000">
+        <div
+            class="absolute -top-[10%] -left-[10%] w-[500px] h-[500px] rounded-full bg-blue-300 dark:bg-blue-600 blur-[100px] animate-blob">
+        </div>
+        <div
+            class="absolute top-[20%] -right-[10%] w-[600px] h-[600px] rounded-full bg-purple-200 dark:bg-purple-900 blur-[120px] animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-[20%] left-[20%] w-[700px] h-[700px] rounded-full bg-cyan-200 dark:bg-blue-800 blur-[130px] animate-blob animation-delay-4000">
+        </div>
+    </div>
+    <div class="noise-bg"></div>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useEffect, useRef, useState } = React;
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Initial theme check
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // --- Icons ---
+        const MessageSquare = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>;
+        const Inbox = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><polyline points="22 12 16 12 14 15 10 15 8 12 2 12" /><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" /></svg>;
+        const Gift = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><rect x="3" y="8" width="18" height="4" rx="1" /><path d="M12 8v13" /><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" /><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" /></svg>;
+        const Unlink = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="m18.84 12.25 1.72-1.71h-.01a5.003 5.003 0 0 0-7.08-7.07l-1.72 1.71" /><path d="m5.17 11.75-1.71 1.71a5.004 5.004 0 0 0 7.07 7.07l1.71-1.71" /><line x1="8" y1="8" x2="16" y2="16" /></svg>;
+        const Clock = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>;
+        const Droplets = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7 2.9 7 2.9s-2.29 6.16-2.29 6.16C3.57 10 3 11.09 3 12.25c0 2.22 1.8 4.05 4 4.05z" /><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5 1.5 1.2 2.5 2.5 2.5 4.2a5.2 5.2 0 0 1-5.2 5.2c-1.8 0-3.4-.9-4.3-2.3" /></svg>;
+        const Waves = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.6 2 5.2 2 2.5 0 2.5-2 5.2-2 1.3 0 1.9.5 2.5 1" /><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.6 2 5.2 2 2.5 0 2.5-2 5.2-2 1.3 0 1.9.5 2.5 1" /><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.6 2 5.2 2 2.5 0 2.5-2 5.2-2 1.3 0 1.9.5 2.5 1" /></svg>;
+        const Instagram = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>;
+        const Linkedin = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>;
+        const Sun = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></svg>;
+        const Moon = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>;
+
+        // User Calendly Link (Placeholder)
+        const CALENDLY_LINK = "https://calendly.com/marco-brandsculptors/30min";
+
+        // --- Component Building Blocks ---
+        const Button = ({ children, variant = 'primary', href = CALENDLY_LINK, className = '', target = "_blank", rel = "noopener noreferrer", ...props }) => {
+            const base = "inline-flex items-center justify-center font-medium transition-all duration-300 ease-out rounded-[12px] text-body px-6 py-3 cursor-pointer hover:scale-[1.02] hover:opacity-90";
+            const variants = {
+                primary: "bg-accent text-white hover:bg-accent-hover shadow-sm",
+                secondary: "bg-transparent text-text-primary border border-border hover:bg-black/5 dark:hover:bg-white/5"
+            };
+
+            const isInternal = href.startsWith('#');
+            const finalTarget = isInternal ? undefined : target;
+            const finalRel = isInternal ? undefined : rel;
+
+            return (
+                <a href={href} target={finalTarget} rel={finalRel} className={`${base} ${variants[variant]} ${className}`} {...props}>
+                    {children}
+                </a>
+            );
+        };
+
+        const Section = ({ id, className = '', children }) => (
+            <section id={id} className={`py-[clamp(5rem,10vh,8rem)] px-[clamp(1.5rem,5vw,6rem)] ${className} relative z-10`}>
+                <div className="max-w-[1200px] mx-auto w-full">
+                    {children}
+                </div>
+            </section>
+        );
+
+        const Eyebrow = ({ children, className = '' }) => (
+            <span className={`block font-mono text-text-tertiary text-small uppercase tracking-[0.1em] mb-4 ${className}`}>
+                {children}
+            </span>
+        );
+
+        const ThemeToggle = () => {
+            const [isDark, setIsDark] = useState(false);
+
+            useEffect(() => {
+                setIsDark(document.documentElement.classList.contains('dark'));
+            }, []);
+
+            const toggle = () => {
+                if (isDark) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                    setIsDark(false);
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                    setIsDark(true);
+                }
+            };
+
+            return (
+                <button onClick={toggle} className="p-2 text-text-secondary hover:text-text-primary transition-colors ml-2 md:ml-0" aria-label="Toggle theme">
+                    {isDark ? <Sun size={18} /> : <Moon size={18} />}
+                </button>
+            )
+        };
+
+        const Navbar = () => {
+            return (
+                <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[850px]">
+                    <div className="flex items-center justify-between backdrop-blur-xl bg-bg-surface/70 dark:bg-bg-surface/50 border border-border shadow-apple rounded-full px-6 py-3 transition-colors duration-300 relative overflow-hidden">
+                        {/* Subtle frosted glass inner stroke */}
+                        <div className="absolute inset-0 rounded-full border border-white/20 dark:border-white/5 pointer-events-none"></div>
+
+                        <div className="font-sans font-bold text-text-primary tracking-tight text-lg relative z-10">Brand Sculptors</div>
+
+                        <div className="hidden md:flex items-center gap-6 relative z-10">
+                            <a href="#framework" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors duration-200">Framework</a>
+                            <a href="#results" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors duration-200">Results</a>
+                            <a href="#how" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors duration-200">About</a>
+                            <div className="w-[1px] h-4 bg-border ml-2 mr-2"></div>
+                            <ThemeToggle />
+                        </div>
+
+                        <div className="flex items-center relative z-10">
+                            <div className="md:hidden mr-2">
+                                <ThemeToggle />
+                            </div>
+                            <Button href={CALENDLY_LINK} className="!py-2 !px-4 !text-sm !rounded-[12px] text-white">Let's Talk</Button>
+                        </div>
+                    </div>
+                </nav>
+            );
+        }
+
+        const Hero = () => {
+            const heroRef = useRef(null);
+
+            useEffect(() => {
+                const ctx = gsap.context(() => {
+                    // Pimp it 30%: Smooth clip-path text reveal for the H1 lines
+                    gsap.fromTo('.hero-text-line',
+                        { y: '120%' },
+                        { y: '0%', duration: 1.1, stagger: 0.15, ease: "power4.out", delay: 0.2 }
+                    );
+
+                    gsap.fromTo('.hero-anim',
+                        { opacity: 0, y: 20 },
+                        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power2.out", delay: 0.8 }
+                    );
+                }, heroRef);
+                return () => ctx.revert();
+            }, []);
+
+            return (
+                <section ref={heroRef} className="relative w-full h-[100dvh] bg-transparent flex items-center justify-center px-[clamp(1.5rem,5vw,6rem)] z-10">
+                    <div className="max-w-[800px] w-full mx-auto text-center flex flex-col items-center mt-12">
+
+                        <div className="hero-anim opacity-0">
+                            <Eyebrow>CONTENT CONVERSION SYSTEM</Eyebrow>
+                        </div>
+
+                        <h1 className="text-display text-text-primary font-bold mb-6 flex flex-col items-center">
+                            <span className="overflow-hidden pb-1 -mb-1 block">
+                                <span className="inline-block hero-text-line translate-y-[120%]">Your content gets views.</span>
+                            </span>
+                            <span className="overflow-hidden pb-1 -mb-1 block">
+                                <span className="inline-block hero-text-line translate-y-[120%]">But does it get leads?</span>
+                            </span>
+                        </h1>
+
+                        <p className="hero-anim opacity-0 text-body text-text-secondary max-w-[580px] mb-10 mx-auto">
+                            We help business owners turn random posting into a lead generation system — backed by data from 30M+ monthly impressions across 8 channels.
+                        </p>
+
+                        <div className="hero-anim opacity-0 flex flex-col sm:flex-row items-center gap-4 justify-center w-full sm:w-auto">
+                            <Button variant="primary" className="w-full sm:w-auto text-white">Book Strategy Call</Button>
+                            <Button variant="secondary" href="#framework" target="_self" className="w-full sm:w-auto">Watch the Framework ↓</Button>
+                        </div>
+
+                    </div>
+                </section>
+            );
+        };
+
+        const ProofBar = () => {
+            return (
+                <div className="relative z-10 w-full bg-bg-surface/50 backdrop-blur-md border-y border-border py-8 px-[clamp(1.5rem,5vw,6rem)] overflow-hidden">
+                    <div className="max-w-[1200px] w-full mx-auto">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 flex-wrap">
+                            {[
+                                { stat: "30M+", label: "Monthly Impressions" },
+                                { stat: "8", label: "Channels Managed" },
+                                { stat: "1000s", label: "Leads Generated Monthly" },
+                                { stat: "5+", label: "Years in Content Ops" }
+                            ].map((item, i) => (
+                                <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
+                                    <span className="font-sans font-bold text-text-primary text-[1.75rem] leading-tight mb-1">{item.stat}</span>
+                                    <span className="font-mono text-text-tertiary text-small">{item.label}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const Problem = () => {
+            const leaks = [
+                { num: "1", title: "No Call to Action", icon: MessageSquare, text: "Views don't convert themselves." },
+                { num: "2", title: "No Capture Mechanism", icon: Inbox, text: "No way to collect emails or DMs." },
+                { num: "3", title: "Generic Lead Magnet", icon: Gift, text: "Offers that attract the wrong crowd." },
+                { num: "4", title: "Content ≠ Offer Aligned", icon: Unlink, text: "Disconnect between post and product." },
+                { num: "5", title: "No Follow-Up Sequence", icon: Clock, text: "Leads go dead after first contact." },
+            ];
+
+            return (
+                <Section className="bg-transparent">
+                    <div className="max-w-[700px] mx-auto text-center mb-16 scroll-anim">
+                        <Eyebrow>THE REAL PROBLEM</Eyebrow>
+                        <h2 className="text-h2 text-text-primary font-semibold mb-6">
+                            Most businesses don't have a content problem. They have a conversion problem.
+                        </h2>
+                        <p className="text-body text-text-secondary">
+                            You're posting consistently, but you have no mechanism to capture interest. You have a great store and beautiful products, but no cash register. Your audience loves your content, but without a conversion system, you're just entertaining them for free.
+                        </p>
+                    </div>
+
+                    <div className="flex flex-wrap justify-center gap-4">
+                        {leaks.map((leak, i) => {
+                            const Icon = leak.icon;
+                            return (
+                                <div key={i} className="scroll-anim w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.66rem)] max-w-[380px] bg-bg-surface border border-border shadow-apple p-6 rounded-[20px] flex flex-col items-start hover:border-text-tertiary hover:shadow-md transition-all duration-300">
+                                    <div className="flex items-center justify-between w-full mb-4">
+                                        <span className="font-mono text-accent text-small">0{leak.num}</span>
+                                        <Icon size={20} className="text-text-tertiary" strokeWidth={1.5} />
+                                    </div>
+                                    <h3 className="text-text-primary font-semibold mb-2">{leak.title}</h3>
+                                    <p className="text-text-secondary text-small">{leak.text}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
+
+                    <div className="mt-12 text-center scroll-anim">
+                        <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="text-accent text-body font-medium hover:text-accent-hover transition-colors duration-200">
+                            Find your leaks → Book Strategy Call
+                        </a>
+                    </div>
+                </Section>
+            )
+        };
+
+        const Framework = () => {
+            const phases = [
+                { num: "01", name: "Content Audit" },
+                { num: "02", name: "North Star" },
+                { num: "03", name: "Proof Mining" },
+                { num: "04", name: "Content Architecture" },
+                { num: "05", name: "Validation Protocol" },
+                { num: "06", name: "Conversion Engine" }
+            ];
+
+            return (
+                <Section id="framework" className="bg-bg-surface/60 backdrop-blur-md rounded-[40px] max-w-[calc(100%-3rem)] mx-auto my-12 border border-border shadow-apple">
+                    <div className="max-w-[900px] mx-auto scroll-anim text-center mb-12 mt-4">
+                        <Eyebrow>THE SYSTEM</Eyebrow>
+                        <h2 className="text-h2 text-text-primary font-semibold mb-4">
+                            The Content Conversion System
+                        </h2>
+                        <p className="text-body text-text-secondary">
+                            The exact 6-phase framework behind 30M+ impressions and thousands of leads generated monthly. Watch the full breakdown.
+                        </p>
+                    </div>
+
+                    <div className="scroll-anim w-full max-w-[900px] mx-auto aspect-video rounded-[20px] overflow-hidden border border-border bg-bg-elevated shadow-apple relative mb-10">
+                        <iframe
+                            className="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0"
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen>
+                        </iframe>
+                    </div>
+
+                    <div className="scroll-anim flex flex-wrap justify-center gap-3 mb-12 max-w-[900px] mx-auto">
+                        {phases.map((phase, i) => (
+                            <div key={i} className="flex items-center gap-3 bg-bg-surface border border-border shadow-sm rounded-full px-5 py-2 hover:border-text-tertiary transition-colors duration-300">
+                                <span className="font-mono text-accent text-small">{phase.num}</span>
+                                <span className="text-text-primary text-small font-medium">{phase.name}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="text-center scroll-anim mb-4">
+                        <Button>Ready to build your system? → Let's Talk</Button>
+                    </div>
+                </Section>
+            );
+        };
+
+        const TapVsWell = () => {
+            return (
+                <Section className="bg-transparent">
+                    <div className="text-center mb-16 scroll-anim">
+                        <Eyebrow>TWO TYPES OF BUSINESSES</Eyebrow>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1000px] mx-auto mb-12">
+                        {/* Tap */}
+                        <div className="scroll-anim bg-bg-surface shadow-apple border border-border rounded-[20px] p-8 hover:border-text-tertiary transition-colors duration-300">
+                            <div className="mb-6 flex items-center justify-between">
+                                <h3 className="text-h3 text-text-primary font-semibold">Tap Business</h3>
+                                <Droplets className="text-text-tertiary" size={28} strokeWidth={1.5} />
+                            </div>
+                            <p className="text-text-secondary text-body mb-8">
+                                Turning off ads means turning off leads. You're renting attention, highly dependent on one channel, and struggling to build a defensible moat.
+                            </p>
+                            <ul className="space-y-4">
+                                <li className="flex gap-3 text-small text-text-tertiary">
+                                    <span className="shrink-0">—</span> Ad account bans cripple cashflow
+                                </li>
+                                <li className="flex gap-3 text-small text-text-tertiary">
+                                    <span className="shrink-0">—</span> Rising CPMs eat margins
+                                </li>
+                                <li className="flex gap-3 text-small text-text-tertiary">
+                                    <span className="shrink-0">—</span> Zero compounding organic momentum
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Well */}
+                        <div className="scroll-anim bg-bg-surface shadow-apple border border-accent-subtle rounded-[20px] p-8 hover:border-accent transition-colors duration-300 relative overflow-hidden group">
+                            <div className="absolute inset-0 bg-gradient-to-br from-accent-subtle to-transparent opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
+                            <div className="relative z-10">
+                                <div className="mb-6 flex items-center justify-between">
+                                    <h3 className="text-h3 text-accent font-semibold">Well Business</h3>
+                                    <Waves className="text-accent" size={28} strokeWidth={1.5} />
+                                </div>
+                                <p className="text-text-secondary text-body mb-8">
+                                    Organic content creates compounding momentum. Leads flow whether you're running ads or not. Brand + content = a true competitive moat.
+                                </p>
+                                <ul className="space-y-4">
+                                    <li className="flex gap-3 text-small text-text-tertiary">
+                                        <span className="text-accent shrink-0">—</span> High-intent inbound leads daily
+                                    </li>
+                                    <li className="flex gap-3 text-small text-text-tertiary">
+                                        <span className="text-accent shrink-0">—</span> Unaffected by platform algorithm shifts
+                                    </li>
+                                    <li className="flex gap-3 text-small text-text-tertiary">
+                                        <span className="text-accent shrink-0">—</span> Content assets work 24/7/365
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p className="text-center text-text-secondary scroll-anim">
+                        The Content Conversion System builds the well. So your leads keep flowing.
+                    </p>
+                </Section>
+            )
+        };
+
+        const HowItWorks = () => {
+            const steps = [
+                {
+                    num: "01",
+                    title: "Diagnose",
+                    desc: "We audit your content funnel end-to-end. Find where leads are leaking. Identify the low-hanging fruit. No guessing — data tells us where to start."
+                },
+                {
+                    num: "02",
+                    title: "Build",
+                    desc: "Research what's working in your space. Adapt proven hooks, formats, and CTAs. Set up ManyChat automation. Create your first content sprint."
+                },
+                {
+                    num: "03",
+                    title: "Scale",
+                    desc: "Test, measure, iterate. Kill what doesn't work. Double down on what does. Build KPI tracking. Hand off a system you can run without us."
+                }
+            ];
+
+            return (
+                <Section id="how" className="bg-bg-surface/50 backdrop-blur-md border-y border-border">
+                    <div className="max-w-[800px] mx-auto text-center mb-16 scroll-anim">
+                        <Eyebrow>HOW IT WORKS</Eyebrow>
+                        <h2 className="text-h2 text-text-primary font-semibold">
+                            From random posting to predictable leads in 8 weeks.
+                        </h2>
+                    </div>
+
+                    <div className="max-w-[800px] mx-auto flex flex-col gap-8">
+                        {steps.map((step, i) => (
+                            <div key={i} className="scroll-anim flex flex-col sm:flex-row gap-6 sm:gap-10 border-b border-border pb-8 last:border-0 last:pb-0">
+                                <div className="font-mono text-[clamp(2.5rem,4vw,3.5rem)] text-accent leading-none shrink-0 font-light opacity-60 dark:opacity-40">
+                                    {step.num}
+                                </div>
+                                <div>
+                                    <h3 className="text-text-primary font-semibold text-h3 mb-3">{step.title}</h3>
+                                    <p className="text-text-secondary text-body leading-relaxed">{step.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </Section>
+            );
+        };
+
+        const Results = () => {
+            const proofs = [
+                {
+                    title: "Sjard Roscher & Quantum Leap Fitness",
+                    desc: "Content strategy for 260K IG + 50K YouTube. 30M+ monthly impressions."
+                },
+                {
+                    title: "8 Channels Managed",
+                    desc: "Strategic lead across 4 YouTube and 4 Instagram channels simultaneously."
+                },
+                {
+                    title: "5+ Years in Content Ops",
+                    desc: "From TAM Akademie to Quantum Leap — building video marketing systems at scale."
+                },
+                {
+                    title: "Thousands of Monthly Leads",
+                    desc: "Automated lead gen through content + ManyChat across multiple businesses."
+                }
+            ];
+
+            return (
+                <Section id="results" className="bg-transparent">
+                    <div className="max-w-[800px] mx-auto scroll-anim mb-16 text-center">
+                        <Eyebrow>TRACK RECORD</Eyebrow>
+                        <h2 className="text-h2 text-text-primary font-semibold mt-4">
+                            This isn't theory. It's what we do every day.
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1000px] mx-auto">
+                        {proofs.map((proof, i) => (
+                            <div key={i} className="scroll-anim bg-bg-surface shadow-apple border border-border rounded-[20px] p-8 hover:border-text-tertiary transition-colors duration-300">
+                                <h3 className="text-text-primary font-semibold mb-3 text-lg">{proof.title}</h3>
+                                <p className="text-text-secondary text-body">{proof.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </Section>
+            );
+        }
+
+        const CTA = () => {
+            return (
+                <Section className="bg-bg-surface/50 backdrop-blur-md md:bg-transparent border-t border-border md:border-0 relative">
+                    <div className="max-w-[700px] mx-auto text-center relative z-10 scroll-anim">
+                        <h2 className="text-h2 text-text-primary font-semibold mb-6">
+                            Your content should be generating leads. Let's find out why it's not.
+                        </h2>
+                        <p className="text-text-secondary text-body mb-10">
+                            Book a free content funnel audit. We'll diagnose where your leads are leaking and show you the fastest path to results.
+                        </p>
+                        <div className="flex flex-col items-center">
+                            <Button variant="primary" className="!text-lg !px-10 !py-4 mb-6 text-white">Book Strategy Call</Button>
+                            <span className="font-mono text-small text-text-tertiary">Free 15-minute audit · No strings attached</span>
+                        </div>
+                    </div>
+                </Section>
+            );
+        }
+
+        const Footer = () => {
+            return (
+                <footer className="bg-bg-surface border-t border-border pt-16 pb-8 px-[clamp(1.5rem,5vw,6rem)] relative z-10">
+                    <div className="max-w-[1200px] mx-auto">
+                        <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-16">
+                            <div className="font-sans font-bold text-text-primary tracking-tight text-xl">Brand Sculptors</div>
+
+                            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+                                <a href="#framework" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors">Framework</a>
+                                <a href="#results" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors">Results</a>
+                                <a href="#how" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors">About</a>
+                            </div>
+
+                            <Button className="!py-2 !px-5 !text-sm text-white">Book Strategy Call</Button>
+                        </div>
+
+                        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-border">
+                            <span className="text-text-tertiary text-small">© {new Date().getFullYear()} Brand Sculptors. All rights reserved.</span>
+                            <div className="flex items-center gap-6">
+                                <a href="https://www.instagram.com/marcobednarz_/" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors" aria-label="Instagram">
+                                    <Instagram size={20} strokeWidth={1.5} />
+                                </a>
+                                <a href="https://www.linkedin.com/in/marco-bednarz/" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors" aria-label="LinkedIn">
+                                    <Linkedin size={20} strokeWidth={1.5} />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            )
+        }
+
+        function App() {
+            const containerRef = useRef(null);
+
+            useEffect(() => {
+                // Setup entrance animations
+                const timer = setTimeout(() => {
+                    const ctx = gsap.context(() => {
+                        const anims = gsap.utils.toArray('.scroll-anim');
+                        anims.forEach((anim) => {
+                            gsap.fromTo(anim,
+                                { opacity: 0, y: 30 },
+                                {
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.8,
+                                    ease: "power2.out",
+                                    scrollTrigger: {
+                                        trigger: anim,
+                                        start: "top 85%",
+                                        toggleActions: "play none none none"
+                                    }
+                                }
+                            );
+                        });
+                    }, containerRef);
+
+                    return () => ctx.revert();
+                }, 100);
+                return () => clearTimeout(timer);
+            }, []);
+
+            return (
+                <div ref={containerRef} className="min-h-screen text-text-primary selection:bg-accent selection:text-white pb-10">
+                    <Navbar />
+                    <Hero />
+                    <ProofBar />
+                    <Problem />
+                    <Framework />
+                    <TapVsWell />
+                    <HowItWorks />
+                    <Results />
+                    <CTA />
+                    <Footer />
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
