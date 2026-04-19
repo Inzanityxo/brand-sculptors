@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
-    <title>Brand Sculptors | Lead-Gen Content Strategy</title>
+    <title>Brand Sculptors | Content Conversion System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build a brand where trust compounds into qualified leads. A done-with-you content system for experts and founders.">
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,10 +30,9 @@
                         'accent': 'var(--accent)',
                         'accent-hover': 'var(--accent-hover)',
                         'accent-subtle': 'var(--accent-subtle)',
-                        'success': 'var(--success)',
                     },
                     fontFamily: {
-                        sans: ['"SF Pro Display"', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
                         mono: ['"SF Mono"', 'ui-monospace', '"Cascadia Code"', 'monospace'],
                     },
                     boxShadow: {
@@ -56,27 +61,25 @@
         --bg-elevated: #FFFFFF;
         --border: #D2D2D7;
         --text-primary: #1D1D1F;
-        --text-secondary: #86868B;
-        --text-tertiary: #A1A1A6;
-        --accent: #0066CC;
-        --accent-hover: #0071E3;
-        --accent-subtle: rgba(0, 102, 204, 0.08);
-        --success: #34C759;
-        --apple-shadow: 0 4px 24px rgba(0,0,0,0.04);
+        --text-secondary: #3A3A3C;
+        --text-tertiary: #636366;
+        --accent: #003D99;
+        --accent-hover: #004DBF;
+        --accent-subtle: rgba(0, 61, 153, 0.08);
+        --apple-shadow: 0 4px 24px rgba(0,0,0,0.06);
       }
-      
+
       .dark {
         --bg-primary: #000000;
         --bg-surface: #0A0A0A;
         --bg-elevated: #141414;
-        --border: #2A2A2E; 
-        --text-primary: #FFFFFF;
-        --text-secondary: #A1A1A6;
-        --text-tertiary: #6E6E73;
+        --border: #2A2A2E;
+        --text-primary: #F5F5F7;
+        --text-secondary: #D1D1D6;
+        --text-tertiary: #98989D;
         --accent: #2997FF;
         --accent-hover: #0077ED;
         --accent-subtle: rgba(41, 151, 255, 0.12);
-        --success: #30D158;
         --apple-shadow: 0 4px 24px rgba(255,255,255,0.03);
       }
 
@@ -86,27 +89,34 @@
         color: var(--text-primary);
         transition: background-color 0.4s ease, color 0.4s ease;
       }
+
+      body {
+        font-weight: 450;
+      }
     }
-    
+
     @layer utilities {
       .text-display {
-        font-size: clamp(3rem, 6vw, 5.5rem);
-        line-height: 1.05;
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        line-height: 1.08;
         letter-spacing: -0.03em;
+        font-weight: 700;
       }
       .text-h2 {
-        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-size: clamp(1.75rem, 3.5vw, 3rem);
         letter-spacing: -0.02em;
-        line-height: 1.2;
+        line-height: 1.15;
+        font-weight: 600;
       }
       .text-h3 {
         font-size: clamp(1.25rem, 2vw, 1.75rem);
         letter-spacing: -0.02em;
         line-height: 1.3;
+        font-weight: 600;
       }
       .text-body {
         font-size: 1.125rem;
-        line-height: 1.6;
+        line-height: 1.7;
         letter-spacing: -0.01em;
       }
       .text-small {
@@ -120,7 +130,6 @@
       }
     }
 
-    /* Premium Noise Texture */
     .noise-bg {
       position: fixed;
       top: 0; left: 0;
@@ -133,6 +142,163 @@
     .dark .noise-bg {
       opacity: 0.05;
       mix-blend-mode: overlay;
+    }
+
+    .glow-word {
+      color: #003D99;
+      font-weight: 800;
+    }
+    .dark .glow-word {
+      color: #FF7A00;
+      text-shadow: 0 0 20px rgba(255, 122, 0, 0.35), 0 0 40px rgba(255, 122, 0, 0.15);
+    }
+
+    .glow-underline {
+      position: relative;
+      display: inline;
+    }
+    .glow-underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 3px;
+      background: #FF7A00;
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(255, 122, 0, 0.5), 0 0 20px rgba(255, 122, 0, 0.25);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .faq-answer.open {
+      max-height: 600px;
+      opacity: 1;
+    }
+
+    /* Neumorphic Design System */
+    .neu-card {
+      background: #EEEEF3;
+      border-radius: 20px;
+      box-shadow: 6px 6px 14px rgba(0,0,0,0.07), -4px -4px 10px rgba(255,255,255,0.85);
+      padding: 1.5rem 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .dark .neu-card {
+      background: #1A1A1E;
+      box-shadow: 6px 6px 14px rgba(0,0,0,0.4), -4px -4px 10px rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .neu-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #E8E8ED;
+      border-radius: 999px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--text-secondary);
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.06), -2px -2px 6px rgba(255,255,255,0.8);
+    }
+    .dark .neu-pill {
+      background: #222226;
+      color: var(--text-secondary);
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.3), -2px -2px 6px rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .neu-pill-accent {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.1), -2px -2px 6px rgba(255,255,255,0.6);
+    }
+    .dark .neu-pill-accent {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(41,151,255,0.25), 3px 3px 8px rgba(0,0,0,0.3);
+      border: none;
+    }
+
+    .neu-pill-danger {
+      background: #FFE5E5;
+      color: #CC3333;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.06), -2px -2px 6px rgba(255,255,255,0.8);
+    }
+    .dark .neu-pill-danger {
+      background: rgba(204, 51, 51, 0.15);
+      color: #FF6B6B;
+      box-shadow: 0 0 15px rgba(204,51,51,0.15), 3px 3px 8px rgba(0,0,0,0.3);
+      border: 1px solid rgba(204,51,51,0.2);
+    }
+
+    .neu-line {
+      width: 3px;
+      background: linear-gradient(to bottom, var(--accent), rgba(41,151,255,0.1));
+      border-radius: 999px;
+    }
+    .dark .neu-line {
+      background: linear-gradient(to bottom, var(--accent), rgba(41,151,255,0.05));
+      box-shadow: 0 0 8px rgba(41,151,255,0.1);
+    }
+
+    .neu-stat-card {
+      background: #EEEEF3;
+      border-radius: 16px;
+      padding: 1.25rem 1.75rem;
+      box-shadow: 5px 5px 12px rgba(0,0,0,0.06), -3px -3px 8px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.5);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .dark .neu-stat-card {
+      background: #1A1A1E;
+      box-shadow: 5px 5px 12px rgba(0,0,0,0.35), -3px -3px 8px rgba(255,255,255,0.02), inset 1px 1px 2px rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .neu-stat-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .neu-timeline-node {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: #E8E8ED;
+      color: var(--accent);
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.07), -3px -3px 8px rgba(255,255,255,0.8);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .dark .neu-timeline-node {
+      background: #222226;
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.35), -3px -3px 8px rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .neu-timeline-content {
+      background: #EEEEF3;
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      box-shadow: 5px 5px 12px rgba(0,0,0,0.05), -3px -3px 8px rgba(255,255,255,0.7);
+      flex: 1;
+    }
+    .dark .neu-timeline-content {
+      background: #1A1A1E;
+      box-shadow: 5px 5px 12px rgba(0,0,0,0.3), -3px -3px 8px rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
     }
   </style>
 
@@ -149,18 +315,11 @@
 </head>
 
 <body class="bg-bg-primary text-text-primary antialiased overflow-x-hidden relative">
-    <!-- Visual 30% Pimping: Animated Background Blobs & Noise -->
-    <div
-        class="fixed inset-0 overflow-hidden pointer-events-none z-[-1] opacity-60 dark:opacity-30 mix-blend-multiply dark:mix-blend-screen transition-opacity duration-1000">
-        <div
-            class="absolute -top-[10%] -left-[10%] w-[500px] h-[500px] rounded-full bg-blue-300 dark:bg-blue-600 blur-[100px] animate-blob">
-        </div>
-        <div
-            class="absolute top-[20%] -right-[10%] w-[600px] h-[600px] rounded-full bg-purple-200 dark:bg-purple-900 blur-[120px] animate-blob animation-delay-2000">
-        </div>
-        <div
-            class="absolute -bottom-[20%] left-[20%] w-[700px] h-[700px] rounded-full bg-cyan-200 dark:bg-blue-800 blur-[130px] animate-blob animation-delay-4000">
-        </div>
+    <!-- Animated Background Blobs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1] opacity-60 dark:opacity-30 mix-blend-multiply dark:mix-blend-screen transition-opacity duration-1000">
+        <div class="absolute -top-[10%] -left-[10%] w-[500px] h-[500px] rounded-full bg-blue-300 dark:bg-blue-600 blur-[100px] animate-blob"></div>
+        <div class="absolute top-[20%] -right-[10%] w-[600px] h-[600px] rounded-full bg-purple-200 dark:bg-purple-900 blur-[120px] animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-[20%] left-[20%] w-[700px] h-[700px] rounded-full bg-cyan-200 dark:bg-blue-800 blur-[130px] animate-blob animation-delay-4000"></div>
     </div>
     <div class="noise-bg"></div>
 
@@ -170,7 +329,7 @@
         const { useEffect, useRef, useState } = React;
         gsap.registerPlugin(ScrollTrigger);
 
-        // Initial theme check
+        // Theme check
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
@@ -178,517 +337,540 @@
         }
 
         // --- Icons ---
-        const MessageSquare = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>;
-        const Inbox = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><polyline points="22 12 16 12 14 15 10 15 8 12 2 12" /><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" /></svg>;
-        const Gift = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><rect x="3" y="8" width="18" height="4" rx="1" /><path d="M12 8v13" /><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" /><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" /></svg>;
-        const Unlink = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="m18.84 12.25 1.72-1.71h-.01a5.003 5.003 0 0 0-7.08-7.07l-1.72 1.71" /><path d="m5.17 11.75-1.71 1.71a5.004 5.004 0 0 0 7.07 7.07l1.71-1.71" /><line x1="8" y1="8" x2="16" y2="16" /></svg>;
-        const Clock = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>;
-        const Droplets = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7 2.9 7 2.9s-2.29 6.16-2.29 6.16C3.57 10 3 11.09 3 12.25c0 2.22 1.8 4.05 4 4.05z" /><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5 1.5 1.2 2.5 2.5 2.5 4.2a5.2 5.2 0 0 1-5.2 5.2c-1.8 0-3.4-.9-4.3-2.3" /></svg>;
-        const Waves = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.6 2 5.2 2 2.5 0 2.5-2 5.2-2 1.3 0 1.9.5 2.5 1" /><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.6 2 5.2 2 2.5 0 2.5-2 5.2-2 1.3 0 1.9.5 2.5 1" /><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.6 2 5.2 2 2.5 0 2.5-2 5.2-2 1.3 0 1.9.5 2.5 1" /></svg>;
-        const Instagram = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>;
-        const Linkedin = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>;
         const Sun = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></svg>;
         const Moon = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>;
+        const Instagram = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>;
+        const Linkedin = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>;
+        const ChevronDown = (props) => <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className} style={props.style}><path d="m6 9 6 6 6-6" /></svg>;
 
-        // User Calendly Link (Placeholder)
+        const Glow = ({ children }) => <span className="glow-underline">{children}</span>;
+        const GlowHL = ({ children }) => <span className="glow-word">{children}</span>;
+
         const CALENDLY_LINK = "https://calendly.com/marco-brandsculptors/30min";
 
-        // --- Component Building Blocks ---
-        const Button = ({ children, variant = 'primary', href = CALENDLY_LINK, className = '', target = "_blank", rel = "noopener noreferrer", ...props }) => {
-            const base = "inline-flex items-center justify-center font-medium transition-all duration-300 ease-out rounded-[12px] text-body px-6 py-3 cursor-pointer hover:scale-[1.02] hover:opacity-90";
+        // --- Primitives ---
+        const Button = ({ children, variant = 'primary', href = CALENDLY_LINK, className = '', ...props }) => {
+            const base = "inline-flex items-center justify-center font-semibold transition-all duration-300 ease-out rounded-[12px] px-6 py-3 cursor-pointer hover:scale-[1.02] hover:opacity-90";
             const variants = {
                 primary: "bg-accent text-white hover:bg-accent-hover shadow-sm",
                 secondary: "bg-transparent text-text-primary border border-border hover:bg-black/5 dark:hover:bg-white/5"
             };
-
             const isInternal = href.startsWith('#');
-            const finalTarget = isInternal ? undefined : target;
-            const finalRel = isInternal ? undefined : rel;
-
             return (
-                <a href={href} target={finalTarget} rel={finalRel} className={`${base} ${variants[variant]} ${className}`} {...props}>
+                <a href={href} target={isInternal ? undefined : "_blank"} rel={isInternal ? undefined : "noopener noreferrer"} className={`${base} ${variants[variant]} ${className}`} {...props}>
                     {children}
                 </a>
             );
         };
 
-        const Section = ({ id, className = '', children }) => (
+        const Section = ({ id, className = '', children, wide }) => (
             <section id={id} className={`py-[clamp(5rem,10vh,8rem)] px-[clamp(1.5rem,5vw,6rem)] ${className} relative z-10`}>
-                <div className="max-w-[1200px] mx-auto w-full">
-                    {children}
-                </div>
+                <div className={`${wide ? 'max-w-[1100px]' : 'max-w-[900px]'} mx-auto w-full`}>{children}</div>
             </section>
         );
 
-        const Eyebrow = ({ children, className = '' }) => (
-            <span className={`block font-mono text-text-tertiary text-small uppercase tracking-[0.1em] mb-4 ${className}`}>
-                {children}
-            </span>
+        const Eyebrow = ({ children }) => (
+            <span className="block font-mono text-accent text-[1.5rem] uppercase tracking-[0.12em] mb-6 font-black">{children}</span>
         );
 
         const ThemeToggle = () => {
-            const [isDark, setIsDark] = useState(false);
-
-            useEffect(() => {
-                setIsDark(document.documentElement.classList.contains('dark'));
-            }, []);
-
+            const [isDark, setIsDark] = useState(document.documentElement.classList.contains('dark'));
             const toggle = () => {
-                if (isDark) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.theme = 'light';
-                    setIsDark(false);
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.theme = 'dark';
-                    setIsDark(true);
-                }
+                const next = !isDark;
+                document.documentElement.classList.toggle('dark', next);
+                localStorage.theme = next ? 'dark' : 'light';
+                setIsDark(next);
             };
-
             return (
-                <button onClick={toggle} className="p-2 text-text-secondary hover:text-text-primary transition-colors ml-2 md:ml-0" aria-label="Toggle theme">
-                    {isDark ? <Sun size={18} /> : <Moon size={18} />}
+                <button onClick={toggle} className="p-2 text-text-secondary hover:text-text-primary transition-colors" aria-label="Toggle theme">
+                    {isDark ? <Sun size={16} /> : <Moon size={16} />}
                 </button>
-            )
+            );
         };
 
+        // --- Navbar ---
         const Navbar = () => {
+            const [scrolled, setScrolled] = useState(false);
+            useEffect(() => {
+                const onScroll = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', onScroll);
+                return () => window.removeEventListener('scroll', onScroll);
+            }, []);
             return (
                 <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[850px]">
-                    <div className="flex items-center justify-between backdrop-blur-xl bg-bg-surface/70 dark:bg-bg-surface/50 border border-border shadow-apple rounded-full px-6 py-3 transition-colors duration-300 relative overflow-hidden">
-                        {/* Subtle frosted glass inner stroke */}
+                    <div className={`flex items-center justify-between backdrop-blur-xl bg-bg-surface/70 dark:bg-bg-surface/50 border border-border shadow-apple rounded-full transition-all duration-300 relative overflow-hidden ${scrolled ? 'px-5 py-2' : 'px-6 py-3'}`}>
                         <div className="absolute inset-0 rounded-full border border-white/20 dark:border-white/5 pointer-events-none"></div>
-
-                        <div className="font-sans font-bold text-text-primary tracking-tight text-lg relative z-10">Brand Sculptors</div>
-
-                        <div className="hidden md:flex items-center gap-6 relative z-10">
-                            <a href="#framework" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors duration-200">Framework</a>
-                            <a href="#results" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors duration-200">Results</a>
-                            <a href="#how" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors duration-200">About</a>
-                            <div className="w-[1px] h-4 bg-border ml-2 mr-2"></div>
+                        <div className="font-bold text-text-primary tracking-tight text-lg relative z-10">Brand Sculptors</div>
+                        <div className="hidden md:flex items-center gap-5 relative z-10">
+                            <a href="#system" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors">The System</a>
+                            <a href="#results" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors">Results</a>
+                            <a href="#investment" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors">How It Works</a>
+                            <a href="#faq" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors">FAQ</a>
+                            <div className="w-[1px] h-4 bg-border"></div>
                             <ThemeToggle />
                         </div>
-
-                        <div className="flex items-center relative z-10">
-                            <div className="md:hidden mr-2">
+                        <div className="flex items-center gap-2 relative z-10">
+                            <div className="md:hidden">
                                 <ThemeToggle />
                             </div>
-                            <Button href={CALENDLY_LINK} className="!py-2 !px-4 !text-sm !rounded-[12px] text-white">Let's Talk</Button>
+                            <Button href={CALENDLY_LINK} className="!py-2 !px-4 !text-sm !rounded-[12px] text-white">Book a Call</Button>
                         </div>
                     </div>
                 </nav>
             );
-        }
+        };
 
+        // --- Hero ---
         const Hero = () => {
             const heroRef = useRef(null);
 
             useEffect(() => {
                 const ctx = gsap.context(() => {
-                    // Pimp it 30%: Smooth clip-path text reveal for the H1 lines
-                    gsap.fromTo('.hero-text-line',
-                        { y: '120%' },
-                        { y: '0%', duration: 1.1, stagger: 0.15, ease: "power4.out", delay: 0.2 }
-                    );
-
-                    gsap.fromTo('.hero-anim',
-                        { opacity: 0, y: 20 },
-                        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power2.out", delay: 0.8 }
-                    );
+                    gsap.fromTo('.hero-text-line', { y: '120%' }, { y: '0%', duration: 1.1, stagger: 0.15, ease: "power4.out", delay: 0.2 });
+                    gsap.fromTo('.hero-anim', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: "power2.out", delay: 0.7 });
                 }, heroRef);
                 return () => ctx.revert();
             }, []);
 
             return (
-                <section ref={heroRef} className="relative w-full h-[100dvh] bg-transparent flex items-center justify-center px-[clamp(1.5rem,5vw,6rem)] z-10">
-                    <div className="max-w-[800px] w-full mx-auto text-center flex flex-col items-center mt-12">
-
-                        <div className="hero-anim opacity-0">
-                            <Eyebrow>CONTENT CONVERSION SYSTEM</Eyebrow>
-                        </div>
-
-                        <h1 className="text-display text-text-primary font-bold mb-6 flex flex-col items-center">
+                <section ref={heroRef} className="relative w-full min-h-[100dvh] bg-transparent flex items-center justify-center px-[clamp(1.5rem,5vw,6rem)] z-10 pt-28 pb-16">
+                    <div className="max-w-[800px] w-full mx-auto text-center flex flex-col items-center">
+                        <h1 className="text-display text-text-primary mb-8">
                             <span className="overflow-hidden pb-1 -mb-1 block">
-                                <span className="inline-block hero-text-line translate-y-[120%]">Your content gets views.</span>
-                            </span>
-                            <span className="overflow-hidden pb-1 -mb-1 block">
-                                <span className="inline-block hero-text-line translate-y-[120%]">But does it get leads?</span>
+                                <span className="inline-block hero-text-line translate-y-[120%]">Build a brand where <GlowHL>trust</GlowHL> compounds into qualified <GlowHL>leads</GlowHL>.</span>
                             </span>
                         </h1>
 
-                        <p className="hero-anim opacity-0 text-body text-text-secondary max-w-[580px] mb-10 mx-auto">
-                            We help business owners turn random posting into a lead generation system — backed by data from 30M+ monthly impressions across 8 channels.
-                        </p>
+                        <p className="hero-anim opacity-0 text-body text-text-secondary max-w-[620px] mb-10 mx-auto">A done-with-you system that gives you clarity on the steps to find your voice, attract the right audience and turn your expertise into content that builds trust and converts.</p>
 
-                        <div className="hero-anim opacity-0 flex flex-col sm:flex-row items-center gap-4 justify-center w-full sm:w-auto">
-                            <Button variant="primary" className="w-full sm:w-auto text-white">Book Strategy Call</Button>
-                            <Button variant="secondary" href="#framework" target="_self" className="w-full sm:w-auto">Watch the Framework ↓</Button>
+                        <div className="hero-anim opacity-0 w-full max-w-[700px] aspect-video rounded-[20px] overflow-hidden border border-border bg-bg-elevated shadow-apple relative mb-10">
+                            <iframe className="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Content Conversion System" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen loading="lazy"></iframe>
                         </div>
 
+                        <div className="hero-anim opacity-0 flex flex-col sm:flex-row items-center gap-4 justify-center w-full sm:w-auto mb-10">
+                            <Button variant="primary" className="w-full sm:w-auto text-white">Book Your Free Content Audit</Button>
+                            <Button variant="secondary" href="#system" className="w-full sm:w-auto">See How It Works</Button>
+                        </div>
+
+                        <div className="hero-anim opacity-0 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-0 text-text-secondary text-small font-medium">
+                            <span>Content strategist behind 20M+ monthly impressions</span>
+                            <span className="hidden sm:inline mx-3 text-text-tertiary">|</span>
+                            <span>50+ funnels audited</span>
+                            <span className="hidden sm:inline mx-3 text-text-tertiary">|</span>
+                            <span>4 YouTube channels managed</span>
+                        </div>
                     </div>
                 </section>
             );
         };
 
-        const ProofBar = () => {
-            return (
-                <div className="relative z-10 w-full bg-bg-surface/50 backdrop-blur-md border-y border-border py-8 px-[clamp(1.5rem,5vw,6rem)] overflow-hidden">
-                    <div className="max-w-[1200px] w-full mx-auto">
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 flex-wrap">
-                            {[
-                                { stat: "30M+", label: "Monthly Impressions" },
-                                { stat: "8", label: "Channels Managed" },
-                                { stat: "1000s", label: "Leads Generated Monthly" },
-                                { stat: "5+", label: "Years in Content Ops" }
-                            ].map((item, i) => (
-                                <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
-                                    <span className="font-sans font-bold text-text-primary text-[1.75rem] leading-tight mb-1">{item.stat}</span>
-                                    <span className="font-mono text-text-tertiary text-small">{item.label}</span>
-                                </div>
-                            ))}
+        // --- Problem ---
+        const Problem = () => (
+            <Section className="!pt-0">
+                <div className="scroll-anim">
+                    <Eyebrow>THE CONTENT CONVERSION SYSTEM</Eyebrow>
+                    <div className="space-y-6 text-body text-text-secondary mb-10">
+                        <p>Building a content operation that actually generates leads is not about posting more or finding better hooks. It is a full system. Strategy, team structure, workflows, conversion mechanisms and a data-driven process to find out what actually works.</p>
+                        <p>Most experts try to figure this out alone. They hire a social media manager who can post but cannot think strategically. They test random formats with no system to measure what converts. They create content that gets views but never connects to an offer.</p>
+                    </div>
+                </div>
+
+                {/* The Cycle — Research, Adapt, Iterate, Optimize, Scale */}
+                <div className="scroll-anim mb-10">
+                    <div className="relative w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] mx-auto">
+                        {/* Circular arrow paths via SVG */}
+                        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            {/* Circular path arrows connecting the 5 nodes */}
+                            <defs>
+                                <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                                    <polygon points="0 0, 8 3, 0 6" className="fill-text-tertiary" opacity="0.5" />
+                                </marker>
+                            </defs>
+                            {/* Research → Adapt (top-right arc) */}
+                            <path d="M 225 62 Q 300 90 320 160" stroke="var(--text-tertiary)" strokeWidth="1.5" strokeOpacity="0.35" fill="none" markerEnd="url(#arrowhead)" />
+                            {/* Adapt → Iterate (right-bottom arc) */}
+                            <path d="M 330 210 Q 310 290 250 325" stroke="var(--text-tertiary)" strokeWidth="1.5" strokeOpacity="0.35" fill="none" markerEnd="url(#arrowhead)" />
+                            {/* Iterate → Optimize (bottom arc) */}
+                            <path d="M 180 345 Q 120 340 80 300" stroke="var(--text-tertiary)" strokeWidth="1.5" strokeOpacity="0.35" fill="none" markerEnd="url(#arrowhead)" />
+                            {/* Optimize → Scale (left arc) */}
+                            <path d="M 50 250 Q 30 190 50 140" stroke="var(--text-tertiary)" strokeWidth="1.5" strokeOpacity="0.35" fill="none" markerEnd="url(#arrowhead)" />
+                            {/* Scale → Research (top-left arc) */}
+                            <path d="M 80 90 Q 120 50 170 45" stroke="var(--text-tertiary)" strokeWidth="1.5" strokeOpacity="0.35" fill="none" markerEnd="url(#arrowhead)" />
+                        </svg>
+
+                        {/* Center label */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-text-tertiary text-sm font-medium tracking-wide">The Cycle</span>
                         </div>
+
+                        {/* Research — top center */}
+                        <div className="absolute left-1/2 -translate-x-1/2 -top-1" style={{top: '2%'}}>
+                            <span className="neu-pill text-sm sm:text-base px-5 sm:px-6 py-2 sm:py-2.5 font-semibold text-text-primary">Research</span>
+                        </div>
+                        {/* Adapt — top right */}
+                        <div className="absolute" style={{right: '-4%', top: '38%', transform: 'translateY(-50%)'}}>
+                            <span className="neu-pill text-sm sm:text-base px-5 sm:px-6 py-2 sm:py-2.5 font-semibold text-text-primary">Adapt</span>
+                        </div>
+                        {/* Iterate — bottom right */}
+                        <div className="absolute" style={{right: '8%', bottom: '5%'}}>
+                            <span className="neu-pill text-sm sm:text-base px-5 sm:px-6 py-2 sm:py-2.5 font-semibold text-text-primary">Iterate</span>
+                        </div>
+                        {/* Optimize — bottom left */}
+                        <div className="absolute" style={{left: '4%', bottom: '5%'}}>
+                            <span className="neu-pill text-sm sm:text-base px-5 sm:px-6 py-2 sm:py-2.5 font-semibold text-text-primary">Optimize</span>
+                        </div>
+                        {/* Scale — top left */}
+                        <div className="absolute" style={{left: '-4%', top: '38%', transform: 'translateY(-50%)'}}>
+                            <span className="neu-pill text-sm sm:text-base px-5 sm:px-6 py-2 sm:py-2.5 font-semibold text-text-primary">Scale</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="scroll-anim">
+                    <p className="text-body text-text-primary font-semibold text-center mb-10 max-w-[550px] mx-auto">Volume creates data. Data creates clarity. Clarity creates leads.</p>
+
+                    <p className="text-text-primary font-semibold text-body mb-10">That is not a content problem. That is a <Glow>systems problem</Glow>. And it is exactly what I have spent the last five years solving.</p>
+
+                    <div className="border-l-2 border-accent pl-6 py-2">
+                        <p className="text-body text-text-secondary">I have been inside every single process. Editing, scripting, videography, graphic design, distribution, YouTube packaging, team briefing, conversion architecture. I know where the leaks happen, what to prioritize and what to ignore entirely.</p>
+                    </div>
+                </div>
+            </Section>
+        );
+
+        // --- Duality ---
+        const Duality = () => (
+            <Section className="bg-bg-surface/50 backdrop-blur-md border-y border-border">
+                <div className="scroll-anim">
+                    <Eyebrow>WHAT MAKES THIS DIFFERENT</Eyebrow>
+                    <p className="text-body text-text-secondary mb-4">Most people in this space fall into one of two camps. The personal branding crowd tells you to be authentic and hope the audience comes. Philosophy without systems. The marketing engineers give you 47-step funnels. Systems without soul.</p>
+                    <p className="text-h3 text-text-primary mb-12">I work at the <Glow>intersection of both</Glow>.</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                    <div className="scroll-anim bg-bg-surface border border-border shadow-apple rounded-[20px] p-8 hover:border-text-tertiary transition-colors duration-300">
+                        <h3 className="text-text-primary text-h3 mb-4">The Human Side</h3>
+                        <p className="text-text-secondary text-body">We start with who you actually are. What you believe. What experiences shaped your perspective. How to communicate your ideas in a way that makes people think differently. Content mastery comes down to teaching, communication and understanding the psychology of your audience. We find your authentic voice so that what you build <Glow>cannot be copied</Glow>.</p>
+                    </div>
+                    <div className="scroll-anim bg-bg-surface border border-border shadow-apple rounded-[20px] p-8 hover:border-text-tertiary transition-colors duration-300">
+                        <h3 className="text-text-primary text-h3 mb-4">The Systems Side</h3>
+                        <p className="text-text-secondary text-body">Then we build the infrastructure. Research, content architecture, format testing, customer journey mapping, conversion mechanisms, team structure and workflows. Every piece of content becomes a hypothesis. We run experiments, read data, kill what does not work and scale what does.</p>
+                    </div>
+                </div>
+
+                {/* The Equation — Neumorphic Visual */}
+                <div className="scroll-anim flex flex-col items-center mb-12">
+                    <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-5">
+                        <span className="neu-pill text-base sm:text-lg px-5 py-2.5 font-bold text-text-primary">Voice</span>
+                        <span className="text-text-tertiary text-2xl font-light">+</span>
+                        <span className="neu-pill text-base sm:text-lg px-5 py-2.5 font-bold text-text-primary">System</span>
+                        <span className="text-text-tertiary text-2xl font-light">=</span>
+                        <span className="neu-pill neu-pill-accent text-base sm:text-lg px-6 py-2.5 font-bold">Leads</span>
+                    </div>
+                </div>
+
+                <p className="scroll-anim text-body text-text-secondary text-center max-w-[700px] mx-auto">Neither side works alone. Voice without systems stays small. Systems without voice is noise. The Content Conversion System delivers both, tailored to your goals.</p>
+            </Section>
+        );
+
+        // --- Proof ---
+        const Proof = () => (
+            <Section id="results" className="!pb-6">
+                <div className="scroll-anim">
+                    <Eyebrow>RESULTS</Eyebrow>
+                    <div className="space-y-6 text-body text-text-secondary mb-14">
+                        <p>I work as a content strategist directly with one of Germany's most profitable fitness personal brands. His personal brand alone generates over 20 million impressions a month and thousands of leads through organic content. On top of that, I strategize and manage two additional YouTube channels and three Instagram channels under his brand umbrella.</p>
+                        <p>I also work with an AI academy founder who wanted to stop depending on partner events and build an organic content ecosystem. We built a full distribution system around his expertise and he is now scaling his academy and attracting people who resonate with his approach before they ever speak to him.</p>
+                    </div>
+                </div>
+
+                <div className="scroll-anim grid grid-cols-2 md:grid-cols-4 gap-5 mb-14 py-10">
+                    {[
+                        { num: "20M+", label: "Monthly impressions managed" },
+                        { num: "50+", label: "Content funnels audited" },
+                        { num: "4", label: "YouTube channels managed" },
+                        { num: "5", label: "Instagram channels managed" }
+                    ].map((s, i) => (
+                        <div key={i} className="neu-stat-card">
+                            <span className="block font-bold text-text-primary text-[clamp(1.75rem,3.5vw,2.5rem)] leading-tight mb-2">{s.num}</span>
+                            <span className="text-text-secondary text-small font-medium">{s.label}</span>
+                        </div>
+                    ))}
+                </div>
+
+                <p className="scroll-anim text-body text-text-secondary text-center">I have worked across fitness, AI education and leadership development. The principles are universal. The application is always unique.</p>
+            </Section>
+        );
+
+        // --- Mid-page CTA ---
+        const MidCTA = () => (
+            <Section className="!pt-4 !pb-16">
+                <div className="scroll-anim text-center">
+                    <Button variant="primary" className="text-white !text-lg !px-10 !py-4">Book Your Free Content Audit</Button>
+                </div>
+            </Section>
+        );
+
+        // --- How It Works (The System) ---
+        const HowItWorks = () => (
+            <Section id="system" className="bg-bg-surface/40 backdrop-blur-md border-y border-border">
+                <div className="scroll-anim mb-14">
+                    <Eyebrow>THE SYSTEM</Eyebrow>
+                    <p className="text-body text-text-secondary mb-6">The Content Conversion System runs in six phases over twelve weeks. By the end you have a fully operational content ecosystem and you are not dependent on anyone to keep it running.</p>
+                    <p className="text-body text-text-secondary">Most clients choose to continue working with me beyond the twelve weeks because they want a sparring partner as they grow, not because they need one. That option is always there but the system is built so you never have to take it.</p>
+                </div>
+
+                {/* Neumorphic Phase Timeline */}
+                <div className="relative">
+                    {/* Vertical connecting line */}
+                    <div className="hidden sm:block absolute left-[21px] top-[22px] bottom-[22px] w-[3px] neu-line" style={{zIndex: 1}}></div>
+
+                    <div className="space-y-6">
+                        {[
+                            { num: "01", title: "Content Funnel Audit", desc: "I start by finding what is broken. I go through your content, test your funnel end to end and identify exactly where leads are dropping off." },
+                            { num: "02", title: "Content North Star", desc: "We define five to seven core messages tied to your offer. This is where the voice work lives. We dig into what sets you apart and how to communicate it." },
+                            { num: "03", title: "Proof Mining", desc: "We research what is already working in your space. Outlier content, proven formats, structures that drive engagement. Adapt what is proven, make it yours." },
+                            { num: "04", title: "Content Architecture", desc: "Every piece of content gets a purpose. Hooks mapped to your offer, capture mechanisms, format testing with at least ten posts per format to gather real data." },
+                            { num: "05", title: "Validation Protocol", desc: "Post, measure, iterate, scale. We track retention, engagement quality and comment sentiment. Kill losers fast. Double down on winners. By week six you have a pattern you can trust." },
+                            { num: "06", title: "Conversion Engine", desc: "KPI dashboard, optimized landing pages, email sequences, documented winning formulas and a repurposing plan. By week twelve the system is yours." }
+                        ].map((phase, i) => (
+                            <div key={i} className="scroll-anim flex gap-5 sm:gap-6 items-start">
+                                <div className="neu-timeline-node">{phase.num}</div>
+                                <div className="neu-timeline-content">
+                                    <h3 className="text-text-primary text-h3 mb-2">{phase.title}</h3>
+                                    <p className="text-text-secondary text-body">{phase.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Section>
+        );
+
+        // --- Who This Is For ---
+        const WhoThisIsFor = () => (
+            <Section>
+                <div className="scroll-anim mb-12">
+                    <Eyebrow>IS THIS FOR YOU?</Eyebrow>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="scroll-anim">
+                        <h3 className="text-text-primary text-h3 mb-6">This is for you if:</h3>
+                        <ul className="space-y-5">
+                            {[
+                                "You have a profitable business and a proven offer but your pipeline depends on you being in the room",
+                                "You have the capital to invest into building your brand and the ambition to build something that lasts",
+                                "You want to become the trusted name in your space, not just get more clients",
+                                "You can commit at least one long-form content input per week"
+                            ].map((item, i) => (
+                                <li key={i} className="flex gap-3 text-body text-text-secondary">
+                                    <span className="text-accent shrink-0 mt-1 font-mono text-small font-bold">+</span>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="scroll-anim">
+                        <h3 className="text-text-primary text-h3 mb-6">This is not for you if:</h3>
+                        <ul className="space-y-5">
+                            {[
+                                "No proven offer yet. The system amplifies what works, it does not build foundations",
+                                "Looking for done-for-you while you disappear. Your expertise is the fuel",
+                                "Chasing viral fame or vanity metrics. I optimize for qualified leads and trust",
+                                "Not ready to commit financially or invest five or more hours a week"
+                            ].map((item, i) => (
+                                <li key={i} className="flex gap-3 text-body text-text-secondary">
+                                    <span className="shrink-0 mt-1 font-mono text-small font-bold">-</span>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </Section>
+        );
+
+        // --- Investment + The Call (Combined) ---
+        const Investment = () => (
+            <Section id="investment" className="bg-bg-surface/50 backdrop-blur-md border-y border-border">
+                <div className="scroll-anim mb-12">
+                    <Eyebrow>HOW WE WORK TOGETHER</Eyebrow>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    {[
+                        {
+                            title: "Consulting",
+                            bullets: [
+                                "Full six-phase engagement over twelve weeks",
+                                "Strategy, architecture, validation and conversion systems",
+                                "You walk away fully independent"
+                            ]
+                        },
+                        {
+                            title: "Consulting + Execution",
+                            bullets: [
+                                "Everything in Consulting",
+                                "Hands-on support from my team",
+                                "Editing, tool setup, social media management",
+                                "Production support tailored to your needs"
+                            ]
+                        },
+                        {
+                            title: "Full Support",
+                            subtitle: "Interim Content Team",
+                            bullets: [
+                                "My team as your content department",
+                                "Full production, management and optimization",
+                                "You focus on creating the content only you can deliver",
+                                "Premium tier, priced accordingly"
+                            ]
+                        }
+                    ].map((tier, i) => (
+                        <div key={i} className="scroll-anim neu-card flex flex-col">
+                            <div className="mb-5 text-center">
+                                <span className="neu-pill neu-pill-accent text-xl font-extrabold px-10 py-4">{tier.title}</span>
+                            </div>
+                            {tier.subtitle && (
+                                <p className="text-text-tertiary text-small font-medium -mt-2 mb-4 text-center">{tier.subtitle}</p>
+                            )}
+                            <ul className="space-y-3 flex-1">
+                                {tier.bullets.map((item, j) => (
+                                    <li key={j} className="flex gap-3 text-text-secondary text-body">
+                                        <span className="text-accent shrink-0 mt-0.5 font-mono text-small font-bold">+</span>
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+
+                <p className="scroll-anim text-body text-text-secondary text-center mb-16">All tiers require your input and your time. Your expertise is the engine. We build everything around it. Pricing depends on scope and is discussed on the call.</p>
+
+                {/* The Call section integrated */}
+                <div className="scroll-anim max-w-[750px] mx-auto text-center border-t border-border pt-16">
+                    <Eyebrow>YOUR NEXT STEP</Eyebrow>
+                    <p className="text-text-primary text-h3 mb-2">This starts with a 30-minute Content Audit Call.</p>
+                    <p className="text-text-primary text-h3 mb-6"><Glow>No pitch. No pressure</Glow>.</p>
+                    <div className="space-y-4 text-body text-text-secondary mb-10">
+                        <p>Before we speak, I review your social media profiles and your website so we can skip the small talk and get straight to what matters.</p>
+                        <p>If I can help, I will tell you how. If I cannot, I will tell you that too.</p>
+                        <p>Come with questions. The more specific, the better.</p>
+                    </div>
+                    <Button variant="primary" className="!text-lg !px-10 !py-4 text-white whitespace-nowrap">Book Your Free Content Audit Call</Button>
+                </div>
+            </Section>
+        );
+
+        // --- FAQ ---
+        const FAQItem = ({ question, answer }) => {
+            const [open, setOpen] = useState(false);
+            return (
+                <div className="border-b border-border last:border-0">
+                    <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between py-5 text-left cursor-pointer group">
+                        <span className="text-text-primary font-semibold text-body pr-4">{question}</span>
+                        <ChevronDown size={18} className="text-text-secondary shrink-0 transition-transform duration-300" style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }} />
+                    </button>
+                    <div className={`faq-answer ${open ? 'open' : ''} pb-5`}>
+                        <p className="text-text-secondary text-body">{answer}</p>
                     </div>
                 </div>
             );
         };
 
-        const Problem = () => {
-            const leaks = [
-                { num: "1", title: "No Call to Action", icon: MessageSquare, text: "Views don't convert themselves." },
-                { num: "2", title: "No Capture Mechanism", icon: Inbox, text: "No way to collect emails or DMs." },
-                { num: "3", title: "Generic Lead Magnet", icon: Gift, text: "Offers that attract the wrong crowd." },
-                { num: "4", title: "Content ≠ Offer Aligned", icon: Unlink, text: "Disconnect between post and product." },
-                { num: "5", title: "No Follow-Up Sequence", icon: Clock, text: "Leads go dead after first contact." },
-            ];
+        const FAQ = () => (
+            <Section id="faq">
+                <div className="scroll-anim mb-8">
+                    <Eyebrow>FAQ</Eyebrow>
+                </div>
+                <div className="scroll-anim max-w-[750px]">
+                    {[
+                        { q: "How quickly will I see results?", a: "The system is built over twelve weeks. Most clients see their first qualified leads coming in around week four to six as we validate content formats and conversion mechanisms with real data. The real compounding happens in the months after as your ecosystem matures and trust builds with your audience." },
+                        { q: "Do I need content experience?", a: "This is built for people who understand what it takes to create content but have struggled to execute holistically on their own. You do not need to be an expert creator, but you should know the basics. If you have never uploaded a video or do not know what a thumbnail is, this is not the right starting point. This is not an easy ride. It takes dedication and commitment. But working together we will build an absurdly important asset that defines your career for decades." },
+                        { q: "What if I have been posting but nothing converts?", a: "That is the most common scenario I see. You probably do not have a content problem. You have a systems problem. The audit in week one will show you exactly where your leads are leaking and what to fix first." },
+                        { q: "How much time do I need to commit per week?", a: "At minimum five hours. That includes at least one long-form content input per week, whether that is a video, a written piece or a recorded conversation, plus time for our sparring sessions and reviewing what your team or mine produces." },
+                        { q: "What industries does this work for?", a: "I have worked across fitness, AI education, leadership development and more. The principles are universal. The application is always tailored to your specific niche, audience and business model." },
+                        { q: "Do I need a team already?", a: "No. Part of the process is helping you identify who to hire, how to brief them and what to challenge in their work. If you already have a team, we optimize how they operate. If you do not, we build the structure so you know exactly what roles you need and when." },
+                        { q: "What happens after the twelve weeks?", a: "The system is yours. You can run it independently. Most clients choose to continue working with me as a sparring partner because they want support as they scale, not because they need it to keep things running. That option is always available but never required." },
+                        { q: "Is this in English or German?", a: "Primarily in English. But if you are German I can tailor it to you. German is always an option." },
+                        { q: "Not sure if this is the right fit?", a: "Book the Content Audit Call. Thirty minutes, no obligation. I review your profiles before we speak and give you an honest assessment of where you stand and whether working together would make a meaningful difference. If it is not the right fit, I will tell you directly." }
+                    ].map((item, i) => (
+                        <FAQItem key={i} question={item.q} answer={item.a} />
+                    ))}
+                </div>
+            </Section>
+        );
 
-            return (
-                <Section className="bg-transparent">
-                    <div className="max-w-[700px] mx-auto text-center mb-16 scroll-anim">
-                        <Eyebrow>THE REAL PROBLEM</Eyebrow>
-                        <h2 className="text-h2 text-text-primary font-semibold mb-6">
-                            Most businesses don't have a content problem. They have a conversion problem.
-                        </h2>
-                        <p className="text-body text-text-secondary">
-                            You're posting consistently, but you have no mechanism to capture interest. You have a great store and beautiful products, but no cash register. Your audience loves your content, but without a conversion system, you're just entertaining them for free.
-                        </p>
-                    </div>
-
-                    <div className="flex flex-wrap justify-center gap-4">
-                        {leaks.map((leak, i) => {
-                            const Icon = leak.icon;
-                            return (
-                                <div key={i} className="scroll-anim w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.66rem)] max-w-[380px] bg-bg-surface border border-border shadow-apple p-6 rounded-[20px] flex flex-col items-start hover:border-text-tertiary hover:shadow-md transition-all duration-300">
-                                    <div className="flex items-center justify-between w-full mb-4">
-                                        <span className="font-mono text-accent text-small">0{leak.num}</span>
-                                        <Icon size={20} className="text-text-tertiary" strokeWidth={1.5} />
-                                    </div>
-                                    <h3 className="text-text-primary font-semibold mb-2">{leak.title}</h3>
-                                    <p className="text-text-secondary text-small">{leak.text}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
-
-                    <div className="mt-12 text-center scroll-anim">
-                        <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="text-accent text-body font-medium hover:text-accent-hover transition-colors duration-200">
-                            Find your leaks → Book Strategy Call
-                        </a>
-                    </div>
-                </Section>
-            )
-        };
-
-        const Framework = () => {
-            const phases = [
-                { num: "01", name: "Content Audit" },
-                { num: "02", name: "North Star" },
-                { num: "03", name: "Proof Mining" },
-                { num: "04", name: "Content Architecture" },
-                { num: "05", name: "Validation Protocol" },
-                { num: "06", name: "Conversion Engine" }
-            ];
-
-            return (
-                <Section id="framework" className="bg-bg-surface/60 backdrop-blur-md rounded-[40px] max-w-[calc(100%-3rem)] mx-auto my-12 border border-border shadow-apple">
-                    <div className="max-w-[900px] mx-auto scroll-anim text-center mb-12 mt-4">
-                        <Eyebrow>THE SYSTEM</Eyebrow>
-                        <h2 className="text-h2 text-text-primary font-semibold mb-4">
-                            The Content Conversion System
-                        </h2>
-                        <p className="text-body text-text-secondary">
-                            The exact 6-phase framework behind 30M+ impressions and thousands of leads generated monthly. Watch the full breakdown.
-                        </p>
-                    </div>
-
-                    <div className="scroll-anim w-full max-w-[900px] mx-auto aspect-video rounded-[20px] overflow-hidden border border-border bg-bg-elevated shadow-apple relative mb-10">
-                        <iframe
-                            className="absolute top-0 left-0 w-full h-full"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0"
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen>
-                        </iframe>
-                    </div>
-
-                    <div className="scroll-anim flex flex-wrap justify-center gap-3 mb-12 max-w-[900px] mx-auto">
-                        {phases.map((phase, i) => (
-                            <div key={i} className="flex items-center gap-3 bg-bg-surface border border-border shadow-sm rounded-full px-5 py-2 hover:border-text-tertiary transition-colors duration-300">
-                                <span className="font-mono text-accent text-small">{phase.num}</span>
-                                <span className="text-text-primary text-small font-medium">{phase.name}</span>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="text-center scroll-anim mb-4">
-                        <Button>Ready to build your system? → Let's Talk</Button>
-                    </div>
-                </Section>
-            );
-        };
-
-        const TapVsWell = () => {
-            return (
-                <Section className="bg-transparent">
-                    <div className="text-center mb-16 scroll-anim">
-                        <Eyebrow>TWO TYPES OF BUSINESSES</Eyebrow>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1000px] mx-auto mb-12">
-                        {/* Tap */}
-                        <div className="scroll-anim bg-bg-surface shadow-apple border border-border rounded-[20px] p-8 hover:border-text-tertiary transition-colors duration-300">
-                            <div className="mb-6 flex items-center justify-between">
-                                <h3 className="text-h3 text-text-primary font-semibold">Tap Business</h3>
-                                <Droplets className="text-text-tertiary" size={28} strokeWidth={1.5} />
-                            </div>
-                            <p className="text-text-secondary text-body mb-8">
-                                Turning off ads means turning off leads. You're renting attention, highly dependent on one channel, and struggling to build a defensible moat.
-                            </p>
-                            <ul className="space-y-4">
-                                <li className="flex gap-3 text-small text-text-tertiary">
-                                    <span className="shrink-0">—</span> Ad account bans cripple cashflow
-                                </li>
-                                <li className="flex gap-3 text-small text-text-tertiary">
-                                    <span className="shrink-0">—</span> Rising CPMs eat margins
-                                </li>
-                                <li className="flex gap-3 text-small text-text-tertiary">
-                                    <span className="shrink-0">—</span> Zero compounding organic momentum
-                                </li>
-                            </ul>
+        // --- Footer ---
+        const Footer = () => (
+            <footer className="bg-bg-surface border-t border-border pt-16 pb-8 px-[clamp(1.5rem,5vw,6rem)] relative z-10">
+                <div className="max-w-[900px] mx-auto">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                        <div>
+                            <div className="font-bold text-text-primary tracking-tight text-xl">Brand Sculptors</div>
+                            <div className="text-text-secondary text-small mt-1">Marco Bednarz</div>
                         </div>
 
-                        {/* Well */}
-                        <div className="scroll-anim bg-bg-surface shadow-apple border border-accent-subtle rounded-[20px] p-8 hover:border-accent transition-colors duration-300 relative overflow-hidden group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-accent-subtle to-transparent opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
-                            <div className="relative z-10">
-                                <div className="mb-6 flex items-center justify-between">
-                                    <h3 className="text-h3 text-accent font-semibold">Well Business</h3>
-                                    <Waves className="text-accent" size={28} strokeWidth={1.5} />
-                                </div>
-                                <p className="text-text-secondary text-body mb-8">
-                                    Organic content creates compounding momentum. Leads flow whether you're running ads or not. Brand + content = a true competitive moat.
-                                </p>
-                                <ul className="space-y-4">
-                                    <li className="flex gap-3 text-small text-text-tertiary">
-                                        <span className="text-accent shrink-0">—</span> High-intent inbound leads daily
-                                    </li>
-                                    <li className="flex gap-3 text-small text-text-tertiary">
-                                        <span className="text-accent shrink-0">—</span> Unaffected by platform algorithm shifts
-                                    </li>
-                                    <li className="flex gap-3 text-small text-text-tertiary">
-                                        <span className="text-accent shrink-0">—</span> Content assets work 24/7/365
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p className="text-center text-text-secondary scroll-anim">
-                        The Content Conversion System builds the well. So your leads keep flowing.
-                    </p>
-                </Section>
-            )
-        };
-
-        const HowItWorks = () => {
-            const steps = [
-                {
-                    num: "01",
-                    title: "Diagnose",
-                    desc: "We audit your content funnel end-to-end. Find where leads are leaking. Identify the low-hanging fruit. No guessing — data tells us where to start."
-                },
-                {
-                    num: "02",
-                    title: "Build",
-                    desc: "Research what's working in your space. Adapt proven hooks, formats, and CTAs. Set up ManyChat automation. Create your first content sprint."
-                },
-                {
-                    num: "03",
-                    title: "Scale",
-                    desc: "Test, measure, iterate. Kill what doesn't work. Double down on what does. Build KPI tracking. Hand off a system you can run without us."
-                }
-            ];
-
-            return (
-                <Section id="how" className="bg-bg-surface/50 backdrop-blur-md border-y border-border">
-                    <div className="max-w-[800px] mx-auto text-center mb-16 scroll-anim">
-                        <Eyebrow>HOW IT WORKS</Eyebrow>
-                        <h2 className="text-h2 text-text-primary font-semibold">
-                            From random posting to predictable leads in 8 weeks.
-                        </h2>
-                    </div>
-
-                    <div className="max-w-[800px] mx-auto flex flex-col gap-8">
-                        {steps.map((step, i) => (
-                            <div key={i} className="scroll-anim flex flex-col sm:flex-row gap-6 sm:gap-10 border-b border-border pb-8 last:border-0 last:pb-0">
-                                <div className="font-mono text-[clamp(2.5rem,4vw,3.5rem)] text-accent leading-none shrink-0 font-light opacity-60 dark:opacity-40">
-                                    {step.num}
-                                </div>
-                                <div>
-                                    <h3 className="text-text-primary font-semibold text-h3 mb-3">{step.title}</h3>
-                                    <p className="text-text-secondary text-body leading-relaxed">{step.desc}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </Section>
-            );
-        };
-
-        const Results = () => {
-            const proofs = [
-                {
-                    title: "Sjard Roscher & Quantum Leap Fitness",
-                    desc: "Content strategy for 260K IG + 50K YouTube. 30M+ monthly impressions."
-                },
-                {
-                    title: "8 Channels Managed",
-                    desc: "Strategic lead across 4 YouTube and 4 Instagram channels simultaneously."
-                },
-                {
-                    title: "5+ Years in Content Ops",
-                    desc: "From TAM Akademie to Quantum Leap — building video marketing systems at scale."
-                },
-                {
-                    title: "Thousands of Monthly Leads",
-                    desc: "Automated lead gen through content + ManyChat across multiple businesses."
-                }
-            ];
-
-            return (
-                <Section id="results" className="bg-transparent">
-                    <div className="max-w-[800px] mx-auto scroll-anim mb-16 text-center">
-                        <Eyebrow>TRACK RECORD</Eyebrow>
-                        <h2 className="text-h2 text-text-primary font-semibold mt-4">
-                            This isn't theory. It's what we do every day.
-                        </h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1000px] mx-auto">
-                        {proofs.map((proof, i) => (
-                            <div key={i} className="scroll-anim bg-bg-surface shadow-apple border border-border rounded-[20px] p-8 hover:border-text-tertiary transition-colors duration-300">
-                                <h3 className="text-text-primary font-semibold mb-3 text-lg">{proof.title}</h3>
-                                <p className="text-text-secondary text-body">{proof.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </Section>
-            );
-        }
-
-        const CTA = () => {
-            return (
-                <Section className="bg-bg-surface/50 backdrop-blur-md md:bg-transparent border-t border-border md:border-0 relative">
-                    <div className="max-w-[700px] mx-auto text-center relative z-10 scroll-anim">
-                        <h2 className="text-h2 text-text-primary font-semibold mb-6">
-                            Your content should be generating leads. Let's find out why it's not.
-                        </h2>
-                        <p className="text-text-secondary text-body mb-10">
-                            Book a free content funnel audit. We'll diagnose where your leads are leaking and show you the fastest path to results.
-                        </p>
-                        <div className="flex flex-col items-center">
-                            <Button variant="primary" className="!text-lg !px-10 !py-4 mb-6 text-white">Book Strategy Call</Button>
-                            <span className="font-mono text-small text-text-tertiary">Free 15-minute audit · No strings attached</span>
-                        </div>
-                    </div>
-                </Section>
-            );
-        }
-
-        const Footer = () => {
-            return (
-                <footer className="bg-bg-surface border-t border-border pt-16 pb-8 px-[clamp(1.5rem,5vw,6rem)] relative z-10">
-                    <div className="max-w-[1200px] mx-auto">
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-16">
-                            <div className="font-sans font-bold text-text-primary tracking-tight text-xl">Brand Sculptors</div>
-
-                            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-                                <a href="#framework" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors">Framework</a>
-                                <a href="#results" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors">Results</a>
-                                <a href="#how" className="text-text-secondary hover:text-text-primary text-small font-medium transition-colors">About</a>
-                            </div>
-
-                            <Button className="!py-2 !px-5 !text-sm text-white">Book Strategy Call</Button>
+                        <div className="flex items-center gap-6">
+                            <a href="https://www.instagram.com/marcobednarz_/" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-text-primary transition-colors" aria-label="Instagram">
+                                <Instagram size={20} strokeWidth={1.5} />
+                            </a>
+                            <a href="https://www.linkedin.com/in/marco-bednarz/" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-text-primary transition-colors" aria-label="LinkedIn">
+                                <Linkedin size={20} strokeWidth={1.5} />
+                            </a>
                         </div>
 
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-border">
-                            <span className="text-text-tertiary text-small">© {new Date().getFullYear()} Brand Sculptors. All rights reserved.</span>
-                            <div className="flex items-center gap-6">
-                                <a href="https://www.instagram.com/marcobednarz_/" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors" aria-label="Instagram">
-                                    <Instagram size={20} strokeWidth={1.5} />
-                                </a>
-                                <a href="https://www.linkedin.com/in/marco-bednarz/" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors" aria-label="LinkedIn">
-                                    <Linkedin size={20} strokeWidth={1.5} />
-                                </a>
-                            </div>
+                        <Button className="!py-2 !px-5 !text-sm text-white">Book Your Free Content Audit</Button>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-border">
+                        <span className="text-text-secondary text-small">&copy; {new Date().getFullYear()} Brand Sculptors. All rights reserved.</span>
+                        <div className="flex items-center gap-6 text-text-secondary text-small">
+                            <a href="#" className="hover:text-text-primary transition-colors">Impressum</a>
+                            <a href="#" className="hover:text-text-primary transition-colors">Datenschutz</a>
+                            <span>brandsculptors.info</span>
                         </div>
                     </div>
-                </footer>
-            )
-        }
+                </div>
+            </footer>
+        );
 
+        // --- App ---
         function App() {
             const containerRef = useRef(null);
 
             useEffect(() => {
-                // Setup entrance animations
                 const timer = setTimeout(() => {
                     const ctx = gsap.context(() => {
-                        const anims = gsap.utils.toArray('.scroll-anim');
-                        anims.forEach((anim) => {
+                        gsap.utils.toArray('.scroll-anim').forEach((anim) => {
                             gsap.fromTo(anim,
                                 { opacity: 0, y: 30 },
                                 {
-                                    opacity: 1,
-                                    y: 0,
-                                    duration: 0.8,
-                                    ease: "power2.out",
-                                    scrollTrigger: {
-                                        trigger: anim,
-                                        start: "top 85%",
-                                        toggleActions: "play none none none"
-                                    }
+                                    opacity: 1, y: 0, duration: 0.8, ease: "power2.out",
+                                    scrollTrigger: { trigger: anim, start: "top 85%", toggleActions: "play none none none" }
                                 }
                             );
                         });
                     }, containerRef);
-
                     return () => ctx.revert();
                 }, 100);
                 return () => clearTimeout(timer);
             }, []);
 
             return (
-                <div ref={containerRef} className="min-h-screen text-text-primary selection:bg-accent selection:text-white pb-10">
+                <div ref={containerRef} className="min-h-screen text-text-primary selection:bg-accent selection:text-white">
                     <Navbar />
                     <Hero />
-                    <ProofBar />
                     <Problem />
-                    <Framework />
-                    <TapVsWell />
+                    <Duality />
+                    <Proof />
+                    <MidCTA />
                     <HowItWorks />
-                    <Results />
-                    <CTA />
+                    <WhoThisIsFor />
+                    <Investment />
+                    <FAQ />
                     <Footer />
                 </div>
             );
