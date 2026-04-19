@@ -654,10 +654,12 @@
                     <Eyebrow>IS THIS FOR YOU?</Eyebrow>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="scroll-anim">
-                        <h3 className="text-text-primary text-h3 mb-6">This is for you if:</h3>
-                        <ul className="space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="scroll-anim neu-card">
+                        <div className="mb-5 text-center">
+                            <span className="neu-pill neu-pill-accent text-base font-extrabold px-7 py-3">For You</span>
+                        </div>
+                        <ul className="space-y-4">
                             {[
                                 "You have a profitable business and a proven offer but your pipeline depends on you being in the room",
                                 "You have the capital to invest into building your brand and the ambition to build something that lasts",
@@ -671,9 +673,11 @@
                             ))}
                         </ul>
                     </div>
-                    <div className="scroll-anim">
-                        <h3 className="text-text-primary text-h3 mb-6">This is not for you if:</h3>
-                        <ul className="space-y-5">
+                    <div className="scroll-anim neu-card">
+                        <div className="mb-5 text-center">
+                            <span className="neu-pill text-base font-extrabold px-7 py-3 text-text-primary">Not For You</span>
+                        </div>
+                        <ul className="space-y-4">
                             {[
                                 "No proven offer yet. The system amplifies what works, it does not build foundations",
                                 "Looking for done-for-you while you disappear. Your expertise is the fuel",
@@ -681,7 +685,7 @@
                                 "Not ready to commit financially or invest five or more hours a week"
                             ].map((item, i) => (
                                 <li key={i} className="flex gap-3 text-body text-text-secondary">
-                                    <span className="shrink-0 mt-1 font-mono text-small font-bold">-</span>
+                                    <span className="text-text-tertiary shrink-0 mt-1 font-mono text-small font-bold">&minus;</span>
                                     <span>{item}</span>
                                 </li>
                             ))}
