@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Datenschutzerkl&auml;rung | Brand Sculptors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Datenschutzerkl&auml;rung / Privacy Policy for Brand Sculptors.">
+    <meta name="robots" content="noindex, follow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-primary': 'var(--bg-primary)',
+                        'bg-surface': 'var(--bg-surface)',
+                        'bg-elevated': 'var(--bg-elevated)',
+                        'border': 'var(--border)',
+                        'text-primary': 'var(--text-primary)',
+                        'text-secondary': 'var(--text-secondary)',
+                        'text-tertiary': 'var(--text-tertiary)',
+                        'accent': 'var(--accent)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-primary: #F5F5F7;
+            --bg-surface: #FFFFFF;
+            --bg-elevated: #FFFFFF;
+            --border: #D2D2D7;
+            --text-primary: #1D1D1F;
+            --text-secondary: #3A3A3C;
+            --text-tertiary: #636366;
+            --accent: #003D99;
+        }
+        .dark {
+            --bg-primary: #000000;
+            --bg-surface: #0A0A0A;
+            --bg-elevated: #141414;
+            --border: #2A2A2E;
+            --text-primary: #F5F5F7;
+            --text-secondary: #D1D1D6;
+            --text-tertiary: #98989D;
+            --accent: #2997FF;
+        }
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        body { font-weight: 450; }
+        a.link { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+        a.link:hover { opacity: 0.8; }
+    </style>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+
+<body class="bg-bg-primary text-text-primary antialiased">
+
+    <!-- Nav -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[850px]">
+        <div class="flex items-center justify-between backdrop-blur-xl bg-bg-surface/70 dark:bg-bg-surface/50 border border-border shadow-sm rounded-full px-6 py-3 relative overflow-hidden">
+            <div class="absolute inset-0 rounded-full border border-white/20 dark:border-white/5 pointer-events-none"></div>
+            <a href="/" class="font-bold text-text-primary tracking-tight text-lg relative z-10">Brand Sculptors</a>
+            <div class="flex items-center gap-4 relative z-10">
+                <a href="/" class="text-text-secondary hover:text-text-primary text-sm font-medium transition-colors">&larr; Back</a>
+                <button onclick="toggleTheme()" class="p-2 text-text-secondary hover:text-text-primary transition-colors" aria-label="Toggle theme">
+                    <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="max-w-[750px] mx-auto px-6 pt-32 pb-20">
+
+        <h1 class="text-4xl font-bold tracking-tight mb-12">Datenschutzerkl&auml;rung</h1>
+
+        <!-- GERMAN VERSION -->
+        <section class="space-y-8 text-text-secondary" style="font-size: 1.05rem; line-height: 1.75;">
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">1. Verantwortlicher</h2>
+                <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
+                <p class="mt-2">Marco Bednarz<br>Vesaliusstra&szlig;e 82<br>13187 Berlin<br>Deutschland<br>E-Mail: <a href="mailto:marco@brandsculptors.info" class="link">marco@brandsculptors.info</a></p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">2. Allgemeines zur Datenverarbeitung</h2>
+                <p>Ich verarbeite personenbezogene Daten der Nutzer meiner Website grunds&auml;tzlich nur, soweit dies zur Bereitstellung einer funktionsf&auml;higen Website sowie meiner Inhalte und Leistungen erforderlich ist. Die Verarbeitung personenbezogener Daten erfolgt regelm&auml;&szlig;ig nur nach Einwilligung des Nutzers oder wenn eine gesetzliche Grundlage diese gestattet.</p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">3. Hosting (Netlify)</h2>
+                <p>Diese Website wird bei Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, California 94104, USA gehostet. Beim Besuch der Website werden technisch notwendige Daten wie IP-Adresse, Datum und Uhrzeit des Zugriffs, &uuml;bertragene Datenmenge und der anfragende Provider durch Netlify in Server-Logfiles erfasst. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer technisch fehlerfreien und sicheren Bereitstellung der Website). Netlify verarbeitet Daten auch in den USA. Eine Daten&uuml;bermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy Framework, an dem Netlify teilnimmt. Weitere Informationen findest du in der Datenschutzerkl&auml;rung von Netlify: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" class="link">https://www.netlify.com/privacy/</a></p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">4. YouTube-Video-Einbindung (erweiterter Datenschutzmodus)</h2>
+                <p>Auf dieser Website ist ein Video von YouTube eingebunden. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, Muttergesellschaft: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA. Das Video wird im erweiterten Datenschutzmodus (youtube-nocookie.com) eingebunden. Laut YouTube werden dadurch keine Cookies gespeichert, solange du das Video nicht aktiv startest. Beim Starten des Videos k&ouml;nnen jedoch personenbezogene Daten (insbesondere deine IP-Adresse und Video-Interaktionen) an YouTube bzw. Google &uuml;bertragen werden. Darauf habe ich keinen Einfluss. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer ansprechenden Darstellung meiner Inhalte). Eine Daten&uuml;bermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy Framework. Weitere Informationen findest du in der Datenschutzerkl&auml;rung von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="link">https://policies.google.com/privacy</a></p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">5. Externer Link zu Calendly</h2>
+                <p>Auf dieser Website befindet sich ein Link zu einem Terminbuchungstool von Calendly, LLC, 201 West Broadway, Suite 400, Louisville, KY 40202, USA. Erst wenn du aktiv auf den Link klickst und auf die Calendly-Seite weitergeleitet wirst, werden deine Daten durch Calendly verarbeitet. Auf dieser Website selbst findet keine Daten&uuml;bertragung an Calendly statt. F&uuml;r die Datenverarbeitung auf der Calendly-Seite gilt die Datenschutzerkl&auml;rung von Calendly: <a href="https://calendly.com/privacy" target="_blank" rel="noopener noreferrer" class="link">https://calendly.com/privacy</a></p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">6. Deine Rechte</h2>
+                <p>Du hast nach der DSGVO folgende Rechte:</p>
+                <ul class="list-disc list-inside mt-2 space-y-1">
+                    <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
+                    <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
+                    <li>Recht auf L&ouml;schung (Art. 17 DSGVO)</li>
+                    <li>Recht auf Einschr&auml;nkung der Verarbeitung (Art. 18 DSGVO)</li>
+                    <li>Recht auf Daten&uuml;bertragbarkeit (Art. 20 DSGVO)</li>
+                    <li>Widerspruchsrecht (Art. 21 DSGVO)</li>
+                    <li>Recht auf Widerruf einer Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
+                    <li>Recht auf Beschwerde bei einer Aufsichtsbeh&ouml;rde (Art. 77 DSGVO)</li>
+                </ul>
+                <p class="mt-3">Zur Aus&uuml;bung deiner Rechte gen&uuml;gt eine E-Mail an <a href="mailto:marco@brandsculptors.info" class="link">marco@brandsculptors.info</a>.</p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">7. Zust&auml;ndige Aufsichtsbeh&ouml;rde</h2>
+                <p>Berliner Beauftragte f&uuml;r Datenschutz und Informationsfreiheit<br>Alt-Moabit 59-61<br>10555 Berlin<br><a href="https://www.datenschutz-berlin.de" target="_blank" rel="noopener noreferrer" class="link">https://www.datenschutz-berlin.de</a></p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">8. Aktualit&auml;t dieser Datenschutzerkl&auml;rung</h2>
+                <p>Stand: April 2026.</p>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="border-t border-border my-16"></div>
+        <p class="text-text-tertiary text-sm font-medium uppercase tracking-widest mb-10">English version below</p>
+
+        <!-- ENGLISH VERSION -->
+        <section class="space-y-8 text-text-secondary" style="font-size: 1.05rem; line-height: 1.75;">
+
+            <h2 class="text-text-primary font-bold text-2xl tracking-tight mb-2">Privacy Policy</h2>
+            <p class="text-text-tertiary text-sm italic">The German version above is the legally binding version under German and EU law. This English translation is provided for convenience only.</p>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">1. Data Controller</h3>
+                <p>The data controller within the meaning of the General Data Protection Regulation (GDPR) is:</p>
+                <p class="mt-2">Marco Bednarz<br>Vesaliusstrasse 82<br>13187 Berlin<br>Germany<br>Email: <a href="mailto:marco@brandsculptors.info" class="link">marco@brandsculptors.info</a></p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">2. General Information on Data Processing</h3>
+                <p>I only process personal data of users of my website to the extent necessary to provide a functional website as well as my content and services. The processing of personal data regularly takes place only with the user's consent or when a legal basis permits it.</p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">3. Hosting (Netlify)</h3>
+                <p>This website is hosted by Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, California 94104, USA. When you visit the website, technically necessary data such as IP address, date and time of access, amount of data transmitted, and the requesting provider are recorded by Netlify in server log files. The legal basis is Art. 6 para. 1 lit. f GDPR (legitimate interest in a technically error-free and secure provision of the website). Netlify also processes data in the USA. Data transfer to the USA takes place on the basis of the EU-US Data Privacy Framework, in which Netlify participates. For more information, see Netlify's privacy policy: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" class="link">https://www.netlify.com/privacy/</a></p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">4. YouTube Video Embedding (privacy-enhanced mode)</h3>
+                <p>A video from YouTube is embedded on this website. The provider is Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, parent company: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA. The video is embedded in privacy-enhanced mode (youtube-nocookie.com). According to YouTube, no cookies are stored as long as you do not actively start the video. When you start the video, however, personal data (in particular your IP address and video interactions) may be transmitted to YouTube or Google. I have no influence on this. The legal basis is Art. 6 para. 1 lit. f GDPR (legitimate interest in an appealing presentation of my content). Data transfer to the USA takes place on the basis of the EU-US Data Privacy Framework. For more information, see Google's privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="link">https://policies.google.com/privacy</a></p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">5. External Link to Calendly</h3>
+                <p>This website contains a link to a scheduling tool by Calendly, LLC, 201 West Broadway, Suite 400, Louisville, KY 40202, USA. Your data is only processed by Calendly once you actively click the link and are redirected to the Calendly page. No data transfer to Calendly takes place on this website itself. The privacy policy of Calendly applies to data processing on the Calendly page: <a href="https://calendly.com/privacy" target="_blank" rel="noopener noreferrer" class="link">https://calendly.com/privacy</a></p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">6. Your Rights</h3>
+                <p>Under the GDPR, you have the following rights:</p>
+                <ul class="list-disc list-inside mt-2 space-y-1">
+                    <li>Right of access (Art. 15 GDPR)</li>
+                    <li>Right to rectification (Art. 16 GDPR)</li>
+                    <li>Right to erasure (Art. 17 GDPR)</li>
+                    <li>Right to restriction of processing (Art. 18 GDPR)</li>
+                    <li>Right to data portability (Art. 20 GDPR)</li>
+                    <li>Right to object (Art. 21 GDPR)</li>
+                    <li>Right to withdraw consent (Art. 7 para. 3 GDPR)</li>
+                    <li>Right to lodge a complaint with a supervisory authority (Art. 77 GDPR)</li>
+                </ul>
+                <p class="mt-3">To exercise your rights, simply send an email to <a href="mailto:marco@brandsculptors.info" class="link">marco@brandsculptors.info</a>.</p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">7. Competent Supervisory Authority</h3>
+                <p>Berlin Commissioner for Data Protection and Freedom of Information<br>Alt-Moabit 59-61<br>10555 Berlin<br><a href="https://www.datenschutz-berlin.de" target="_blank" rel="noopener noreferrer" class="link">https://www.datenschutz-berlin.de</a></p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">8. Validity of this Privacy Policy</h3>
+                <p>As of: April 2026.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border py-8 px-6 text-center">
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 text-text-secondary text-sm">
+            <span>&copy; 2026 Brand Sculptors. All rights reserved.</span>
+            <span class="hidden sm:inline text-text-tertiary">|</span>
+            <a href="/impressum" class="hover:text-text-primary transition-colors font-medium">Impressum</a>
+            <a href="/datenschutz" class="hover:text-text-primary transition-colors font-medium">Datenschutz</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.documentElement.classList.toggle('dark', !isDark);
+            localStorage.theme = !isDark ? 'dark' : 'light';
+        }
+    </script>
+</body>
+</html>

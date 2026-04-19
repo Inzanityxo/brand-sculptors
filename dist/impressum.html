@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Impressum | Brand Sculptors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Impressum / Legal Notice for Brand Sculptors.">
+    <meta name="robots" content="noindex, follow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-primary': 'var(--bg-primary)',
+                        'bg-surface': 'var(--bg-surface)',
+                        'bg-elevated': 'var(--bg-elevated)',
+                        'border': 'var(--border)',
+                        'text-primary': 'var(--text-primary)',
+                        'text-secondary': 'var(--text-secondary)',
+                        'text-tertiary': 'var(--text-tertiary)',
+                        'accent': 'var(--accent)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-primary: #F5F5F7;
+            --bg-surface: #FFFFFF;
+            --bg-elevated: #FFFFFF;
+            --border: #D2D2D7;
+            --text-primary: #1D1D1F;
+            --text-secondary: #3A3A3C;
+            --text-tertiary: #636366;
+            --accent: #003D99;
+        }
+        .dark {
+            --bg-primary: #000000;
+            --bg-surface: #0A0A0A;
+            --bg-elevated: #141414;
+            --border: #2A2A2E;
+            --text-primary: #F5F5F7;
+            --text-secondary: #D1D1D6;
+            --text-tertiary: #98989D;
+            --accent: #2997FF;
+        }
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        body { font-weight: 450; }
+        a.link { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+        a.link:hover { opacity: 0.8; }
+    </style>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+
+<body class="bg-bg-primary text-text-primary antialiased">
+
+    <!-- Nav -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[850px]">
+        <div class="flex items-center justify-between backdrop-blur-xl bg-bg-surface/70 dark:bg-bg-surface/50 border border-border shadow-sm rounded-full px-6 py-3 relative overflow-hidden">
+            <div class="absolute inset-0 rounded-full border border-white/20 dark:border-white/5 pointer-events-none"></div>
+            <a href="/" class="font-bold text-text-primary tracking-tight text-lg relative z-10">Brand Sculptors</a>
+            <div class="flex items-center gap-4 relative z-10">
+                <a href="/" class="text-text-secondary hover:text-text-primary text-sm font-medium transition-colors">&larr; Back</a>
+                <button onclick="toggleTheme()" class="p-2 text-text-secondary hover:text-text-primary transition-colors" aria-label="Toggle theme">
+                    <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="max-w-[750px] mx-auto px-6 pt-32 pb-20">
+
+        <h1 class="text-4xl font-bold tracking-tight mb-12">Impressum</h1>
+
+        <!-- GERMAN VERSION -->
+        <section class="space-y-8 text-text-secondary" style="font-size: 1.05rem; line-height: 1.75;">
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">Angaben gem&auml;&szlig; &sect; 5 DDG</h2>
+                <p>Marco Bednarz<br>Vesaliusstra&szlig;e 82<br>13187 Berlin<br>Deutschland</p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">Kontakt</h2>
+                <p>E-Mail: <a href="mailto:marco@brandsculptors.info" class="link">marco@brandsculptors.info</a></p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">Umsatzsteuer</h2>
+                <p>Kleinunternehmer gem&auml;&szlig; &sect; 19 UStG. Es wird keine Umsatzsteuer erhoben und ausgewiesen.</p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">Redaktionell verantwortlich (&sect; 18 Abs. 2 MStV)</h2>
+                <p>Marco Bednarz<br>Vesaliusstra&szlig;e 82<br>13187 Berlin</p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">Streitschlichtung</h2>
+                <p>Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" class="link">https://ec.europa.eu/consumers/odr/</a></p>
+                <p>Meine E-Mail-Adresse findest du oben im Impressum.</p>
+                <p>Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">Haftung f&uuml;r Inhalte</h2>
+                <p>Als Diensteanbieter bin ich gem&auml;&szlig; &sect; 7 Abs. 1 DDG f&uuml;r eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach &sect;&sect; 8 bis 10 DDG bin ich als Diensteanbieter jedoch nicht verpflichtet, &uuml;bermittelte oder gespeicherte fremde Informationen zu &uuml;berwachen oder nach Umst&auml;nden zu forschen, die auf eine rechtswidrige T&auml;tigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unber&uuml;hrt. Eine diesbez&uuml;gliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung m&ouml;glich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werde ich diese Inhalte umgehend entfernen.</p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">Haftung f&uuml;r Links</h2>
+                <p>Mein Angebot enth&auml;lt Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann ich f&uuml;r diese fremden Inhalte auch keine Gew&auml;hr &uuml;bernehmen. F&uuml;r die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf m&ouml;gliche Rechtsverst&ouml;&szlig;e &uuml;berpr&uuml;ft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werde ich derartige Links umgehend entfernen.</p>
+            </div>
+
+            <div>
+                <h2 class="text-text-primary font-semibold text-lg mb-2">Urheberrecht</h2>
+                <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielf&auml;ltigung, Bearbeitung, Verbreitung und jede Art der Verwertung au&szlig;erhalb der Grenzen des Urheberrechtes bed&uuml;rfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur f&uuml;r den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="border-t border-border my-16"></div>
+        <p class="text-text-tertiary text-sm font-medium uppercase tracking-widest mb-10">English version below</p>
+
+        <!-- ENGLISH VERSION -->
+        <section class="space-y-8 text-text-secondary" style="font-size: 1.05rem; line-height: 1.75;">
+
+            <h2 class="text-text-primary font-bold text-2xl tracking-tight mb-2">Legal Notice (Imprint)</h2>
+            <p class="text-text-tertiary text-sm italic">The German version above is the legally binding version under German law. This English translation is provided for convenience only.</p>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">Information according to &sect; 5 DDG (German Digital Services Act)</h3>
+                <p>Marco Bednarz<br>Vesaliusstrasse 82<br>13187 Berlin<br>Germany</p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">Contact</h3>
+                <p>Email: <a href="mailto:marco@brandsculptors.info" class="link">marco@brandsculptors.info</a></p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">VAT</h3>
+                <p>Small business under &sect; 19 UStG (German VAT Act). No VAT is charged or shown on invoices.</p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">Editorial Responsibility (&sect; 18 para. 2 MStV)</h3>
+                <p>Marco Bednarz<br>Vesaliusstrasse 82<br>13187 Berlin</p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">Online Dispute Resolution</h3>
+                <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" class="link">https://ec.europa.eu/consumers/odr/</a></p>
+                <p>My email address is listed above. I am neither willing nor obligated to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">Liability for Content</h3>
+                <p>As a service provider, I am responsible for my own content on these pages in accordance with &sect; 7 para. 1 DDG and general law. According to &sect;&sect; 8 to 10 DDG, I am not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information under general law remain unaffected. Any liability in this regard is only possible from the moment of knowledge of a specific legal violation. Upon becoming aware of such legal violations, I will remove the content immediately.</p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">Liability for Links</h3>
+                <p>My website contains links to external third-party websites over whose content I have no control. Therefore, I cannot assume any liability for this external content. The respective provider or operator of the linked pages is always responsible for their content. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking. However, permanent monitoring of the content of linked pages is not reasonable without concrete evidence of a legal violation. Upon becoming aware of legal violations, I will remove such links immediately.</p>
+            </div>
+
+            <div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">Copyright</h3>
+                <p>Content and works on these pages created by the operator are subject to German copyright law. Reproduction, processing, distribution, and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border py-8 px-6 text-center">
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 text-text-secondary text-sm">
+            <span>&copy; 2026 Brand Sculptors. All rights reserved.</span>
+            <span class="hidden sm:inline text-text-tertiary">|</span>
+            <a href="/impressum" class="hover:text-text-primary transition-colors font-medium">Impressum</a>
+            <a href="/datenschutz" class="hover:text-text-primary transition-colors font-medium">Datenschutz</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.documentElement.classList.toggle('dark', !isDark);
+            localStorage.theme = !isDark ? 'dark' : 'light';
+        }
+    </script>
+</body>
+</html>
