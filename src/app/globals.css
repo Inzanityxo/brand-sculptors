@@ -516,3 +516,9 @@ html[data-intro="1"] .ig-h1 .mask-line > span {
 html:not([data-intro="1"]) .intro-only {
   display: none;
 }
+
+/* Glows and floating cards may reach past the edge. Clip them, so phones never get a wider layout viewport. */
+html,
+body {
+  overflow-x: clip;
+}

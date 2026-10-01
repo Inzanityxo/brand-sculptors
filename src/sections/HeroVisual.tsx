@@ -70,7 +70,7 @@ export function HeroVisual({ className = "", startDelay }: { className?: string;
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/10 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-tr from-royal/30 via-transparent to-transparent mix-blend-soft-light" />
-        <figcaption className="absolute bottom-4 left-5 max-w-[50%]">
+        <figcaption className="absolute bottom-4 left-5 hidden max-w-[50%] sm:block">
           <p className="text-[15px] font-semibold text-paper">{en.hero.portraitName}</p>
           <p className="text-[13px] text-paper/70">{en.hero.portraitLine}</p>
         </figcaption>

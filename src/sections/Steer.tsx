@@ -45,7 +45,7 @@ export function Steer() {
           ref={frame}
           src="/ship/index.html"
           title="A ship builds itself and sets course for the horizon"
-          className="pointer-events-none absolute inset-0 h-full w-full border-0"
+          className="pointer-events-none absolute inset-x-0 bottom-0 aspect-square w-full border-0 md:top-0 md:aspect-auto md:h-full"
           onLoad={() => {
             const box = root.current!.getBoundingClientRect();
             if (box.top < window.innerHeight * 0.6 && box.bottom > 0 && !started.current) {

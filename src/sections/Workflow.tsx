@@ -66,10 +66,10 @@ function Visual({ v, active }: { v: VisualKey; active: boolean }) {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 + i * 0.12, duration: 0.45, ease }}
-                className={`flex items-center justify-between rounded-[12px] border px-4 py-3 text-[14.5px] ${"top" in r && r.top ? "border-note-proof/70 bg-note-proof/10 text-paper shadow-[0_0_30px_-8px_rgba(255,210,63,.7)]" : "border-paper/10 text-paper/70"}`}
+                className={`flex items-center justify-between gap-3 rounded-[12px] border px-4 py-3 text-[14.5px] ${"top" in r && r.top ? "border-note-proof/70 bg-note-proof/10 text-paper shadow-[0_0_30px_-8px_rgba(255,210,63,.7)]" : "border-paper/10 text-paper/70"}`}
               >
                 <span className="font-medium">{r.n}</span>
-                <span className={`font-mono text-[11px] uppercase tracking-[0.12em] ${"top" in r && r.top ? "text-note-proof" : "text-muted"}`}>{r.v}</span>
+                <span className={`shrink-0 text-right font-mono text-[11px] uppercase tracking-[0.12em] ${"top" in r && r.top ? "text-note-proof" : "text-muted"}`}>{r.v}</span>
               </motion.li>
             ))}
           </ul>
@@ -99,8 +99,8 @@ function Visual({ v, active }: { v: VisualKey; active: boolean }) {
       );
     case "build":
       return (
-        <div className="mx-auto flex w-full max-w-[480px] items-end justify-center gap-5">
-          <div className="relative aspect-[9/19] w-[200px] overflow-hidden rounded-[34px] border-[5px] border-[#1c1d26] bg-[#0b0b10] shadow-[0_40px_100px_-30px_rgba(75,72,255,.7)]">
+        <div className="mx-auto flex w-full max-w-[480px] items-end justify-center gap-3 sm:gap-5">
+          <div className="relative aspect-[9/19] w-[150px] shrink-0 overflow-hidden sm:w-[200px] rounded-[34px] border-[5px] border-[#1c1d26] bg-[#0b0b10] shadow-[0_40px_100px_-30px_rgba(75,72,255,.7)]">
             <div className="absolute left-1/2 top-2 h-4 w-20 -translate-x-1/2 rounded-full bg-black" />
             <div className="flex items-center gap-2 border-b border-white/5 px-3 pb-2 pt-8">
               <span className="h-6 w-6 rounded-full bg-gradient-to-br from-royal-glow to-note-cool2" />
@@ -118,7 +118,7 @@ function Visual({ v, active }: { v: VisualKey; active: boolean }) {
                 />
               ))}
             </div>
-            <p className="mt-3 max-w-[190px] font-mono text-[10.5px] leading-relaxed tracking-[0.12em] text-muted">{w.buildLabel.toUpperCase()}</p>
+            <p className="mt-3 max-w-[120px] font-mono sm:max-w-[190px] text-[10.5px] leading-relaxed tracking-[0.12em] text-muted">{w.buildLabel.toUpperCase()}</p>
           </div>
           <style>{`@keyframes wave{from{transform:scaleY(.35)}to{transform:scaleY(1)}}`}</style>
         </div>
@@ -194,7 +194,7 @@ export function Workflow() {
                 >
                   0{i + 1}
                 </span>
-                <div className={`transition-opacity duration-500 ${on ? "opacity-100" : "lg:opacity-40"}`}>
+                <div className={`min-w-0 flex-1 transition-opacity duration-500 ${on ? "opacity-100" : "lg:opacity-40"}`}>
                   <div className="flex items-center gap-3">
                     <p className="text-[clamp(24px,2.4vw,34px)] font-semibold tracking-[-0.025em] text-paper">{s.k}</p>
                     <span className={`rounded-full border px-2 py-0.5 font-mono text-[10px] tracking-[0.16em] ${you ? "border-note-warm/60 text-note-warm" : "border-note-cool2/50 text-note-cool2"}`}>

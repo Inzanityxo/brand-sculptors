@@ -48,25 +48,29 @@ export function FireCode() {
     const ctx = gsap.context(() => {
       gsap.set(q(".fc-lev"), { autoAlpha: 0, scale: 0.9 });
       gsap.set(q(".fc-seam"), { autoAlpha: 0 });
+      if (isMobile) {
+        // phones: no pin, the stacked cards are taller than the screen. Leverage lights up when it scrolls in.
+        gsap
+          .timeline({ scrollTrigger: { trigger: q(".fc-lev")[0], start: "top 80%" } })
+          .to(q(".fc-seam"), { autoAlpha: 1, duration: 0.6 }, 0)
+          .to(q(".fc-lev"), { autoAlpha: 1, scale: 1, duration: 0.8, ease: "expo.out" }, 0.1)
+          .fromTo(q(".fc-spark"), { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.5, ease: "back.out(3)" }, 0.4)
+          .fromTo(q(".fc-closing"), { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.5);
+        return;
+      }
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: q(".fc-stage")[0],
           refreshPriority: PIN_PRIORITY.fireCode,
-          start: isMobile ? "top 20%" : "center center",
+          start: "center center",
           end: "+=110%",
           pin: true,
           scrub: 0.8,
         },
       });
-      if (isMobile) {
-        // stacked cards close the 20px gap and meet at the seam, where Leverage appears
-        tl.fromTo(q(".fc-fire"), { y: -24 }, { y: 10, ease: "power2.inOut" }, 0)
-          .fromTo(q(".fc-code"), { y: 24 }, { y: -10, ease: "power2.inOut" }, 0);
-      } else {
-        tl.fromTo(q(".fc-fire"), { x: "-7vw" }, { x: 0, ease: "power2.inOut" }, 0)
-          .fromTo(q(".fc-code"), { x: "7vw" }, { x: 0, ease: "power2.inOut" }, 0)
-          .fromTo(q(".fc-gap"), { width: "10vw" }, { width: 0, ease: "power2.inOut" }, 0);
-      }
+      tl.fromTo(q(".fc-fire"), { x: "-7vw" }, { x: 0, ease: "power2.inOut" }, 0)
+        .fromTo(q(".fc-code"), { x: "7vw" }, { x: 0, ease: "power2.inOut" }, 0)
+        .fromTo(q(".fc-gap"), { width: "10vw" }, { width: 0, ease: "power2.inOut" }, 0);
       tl.to(q(".fc-border"), { borderColor: "rgba(244,241,234,0)", ease: "none" }, 0.5)
         .to(q(".fc-seam"), { autoAlpha: 1, ease: "none" }, 0.45)
         .to(q(".fc-lev"), { autoAlpha: 1, scale: 1, ease: "expo.out" }, 0.75)
@@ -105,7 +109,7 @@ export function FireCode() {
           />
 
           {/* THE FIRE */}
-          <article className="fc-fire fc-border grain relative z-10 flex-1 rounded-[28px] border border-note-warm/30 bg-gradient-to-br from-[#2a1426]/90 to-ink-900/80 p-7 md:rounded-r-none md:p-10">
+          <article className="fc-fire fc-border grain relative z-10 order-1 flex-1 md:order-none rounded-[28px] border border-note-warm/30 bg-gradient-to-br from-[#2a1426]/90 to-ink-900/80 p-7 md:rounded-r-none md:p-10">
             <p className="font-mono text-[11px] tracking-[0.22em] text-note-warm">{f.fire.label.toUpperCase()}</p>
             <h3 className="h3 mt-4 text-paper">
               <span className="relative inline-block">
@@ -126,7 +130,7 @@ export function FireCode() {
           <div className="fc-gap hidden shrink-0 md:block" style={{ width: "10vw" }} aria-hidden />
 
           {/* THE CODE */}
-          <article className="fc-code fc-border data-grid relative z-10 mt-5 flex-1 rounded-[28px] border border-note-cool2/25 bg-ink-900 p-7 md:mt-0 md:rounded-l-none md:p-10">
+          <article className="fc-code fc-border data-grid relative z-10 order-3 flex-1 md:order-none rounded-[28px] border border-note-cool2/25 bg-ink-900 p-7 md:mt-0 md:rounded-l-none md:p-10">
             <div className="flex items-center justify-between">
               <p className="font-mono text-[11px] tracking-[0.22em] text-note-cool2">{f.code.label.toUpperCase()}</p>
               <span className="font-mono text-[10px] tracking-[0.18em] text-muted">{f.code.rowsNote}</span>
@@ -139,7 +143,7 @@ export function FireCode() {
           </article>
 
           {/* LEVERAGE */}
-          <div className="fc-lev pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-center">
+          <div className="fc-lev pointer-events-none relative z-20 order-2 -my-4 self-center text-center md:absolute md:left-1/2 md:top-1/2 md:order-none md:my-0 md:-translate-x-1/2 md:-translate-y-1/2">
             <div className="relative rounded-[24px] bg-ink-950/80 px-8 py-6 backdrop-blur-md">
               <span
                 className="fc-spark absolute -right-2 -top-2 block h-4 w-4 rounded-full bg-spark"
