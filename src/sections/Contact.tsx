@@ -13,6 +13,7 @@ type Status = "idle" | "sending" | "success" | "error";
 type Errors = Partial<Record<"name" | "email" | "topic" | "invest" | "message" | "consent", string>>;
 
 const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "marco@brandsculptors.info";
+const FORM_NAME = "demo-request";
 const CALENDLY_ON = process.env.NEXT_PUBLIC_FEATURE_CALENDLY === "true";
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || "";
 
@@ -69,13 +70,30 @@ export function Contact() {
     setSendProg(0.06);
     setStatus("sending");
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, startedAt: startedAt.current }),
+      // Bots submit within seconds or fill the hidden field. They get the success screen and nothing is sent.
+      if (values.company || Date.now() - startedAt.current < 3000) {
+        setSendProg(1);
+        setStatus("success");
+        return;
+      }
+      // Netlify Forms: the form is registered through public/__forms.html, Netlify emails every request to Marco.
+      const body = new URLSearchParams({
+        "form-name": FORM_NAME,
+        name: values.name.trim(),
+        email: values.email.trim(),
+        website: values.website.trim(),
+        topic: values.topic,
+        invest: values.invest,
+        message: values.message.trim(),
+        consent: values.consent ? "yes" : "no",
+        company: "",
       });
-      const data = await res.json().catch(() => ({ ok: false }));
-      if (!res.ok || !data.ok) throw new Error(data.error || "failed");
+      const res = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+      if (!res.ok) throw new Error(String(res.status));
       setSendProg(1);
       play("success");
       setStatus("success");

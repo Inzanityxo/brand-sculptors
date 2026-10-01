@@ -92,9 +92,6 @@ export function Footer() {
           <Link className="hover:text-paper" href="/datenschutz">
             {en.footer.datenschutz}
           </Link>
-          <a className="hover:text-paper" href={en.footer.schoolHref} target="_blank" rel="noreferrer">
-            {en.footer.school}
-          </a>
           <button
             type="button"
             onClick={triggerGo}

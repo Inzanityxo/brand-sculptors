@@ -389,8 +389,6 @@ export const en = {
     line: "Brand Sculptors · Marco Bednarz · Berlin",
     impressum: "Impressum",
     datenschutz: "Datenschutz",
-    school: "Brand Sculptors School",
-    schoolHref: "https://www.skool.com/the-sculpt-community-4054/about",
     rocket: "Start GO mode",
   },
 
