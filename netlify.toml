@@ -1,12 +1,9 @@
 [build]
-  publish = "dist"
+  command = "npm run build"
+  publish = ".next"
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "public, max-age=300, s-maxage=3600"
+[build.environment]
+  NODE_VERSION = "22"
 
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=60, s-maxage=3600"
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

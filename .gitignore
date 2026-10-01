@@ -39,6 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+!.env.example
 
-# Local Netlify folder
+# internal working notes, stay local (public repo)
+CLAUDE.md
+AGENTS.md
+docs/
 .netlify
