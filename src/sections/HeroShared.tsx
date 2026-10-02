@@ -12,7 +12,7 @@ export function HeroButtons({ className = "" }: { className?: string }) {
         {en.hero.primary}
         <span aria-hidden>→</span>
       </Button>
-      <Button variant="glass" onClick={() => scrollToId("bottleneck")}>
+      <Button variant="glass" onClick={() => scrollToId("learn")}>
         {en.hero.secondary}
       </Button>
     </div>

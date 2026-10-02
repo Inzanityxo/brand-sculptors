@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { en } from "@/content/en";
-import { prefersReducedMotion } from "@/lib/motion";
+import { prefersReducedMotion, useIsMobile } from "@/lib/motion";
 
 /**
  * Steer the ship. The 3D ship from Marco's keynote builds itself from glowing frames and sets
@@ -16,6 +16,7 @@ export function Steer() {
   const frame = useRef<HTMLIFrameElement>(null);
   const [load, setLoad] = useState(false);
   const started = useRef(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (prefersReducedMotion()) return;
@@ -39,13 +40,30 @@ export function Steer() {
   }, []);
 
   return (
-    <section ref={root} id="steer" className="relative h-[100svh] min-h-[640px] overflow-hidden bg-ink-950">
-      {load && (
+    <section ref={root} id="steer" className="relative h-[100svh] min-h-[780px] overflow-hidden bg-ink-950 md:min-h-[640px]">
+      {load && isMobile && (
+        // phones: a recording of the same scene, because WebGL in an iframe is unreliable on mobile Safari
+        <video
+          className="pointer-events-none absolute inset-x-0 bottom-0 aspect-[4/3] w-full object-cover"
+          src="/ship/ship-mobile.mp4"
+          poster="/ship/ship-mobile-poster.jpg"
+          muted
+          autoPlay
+          playsInline
+          preload="auto"
+          onEnded={(e) => {
+            // the ship is built once, then it keeps sailing
+            e.currentTarget.currentTime = 12;
+            void e.currentTarget.play();
+          }}
+        />
+      )}
+      {load && !isMobile && (
         <iframe
           ref={frame}
           src="/ship/index.html"
           title="A ship builds itself and sets course for the horizon"
-          className="pointer-events-none absolute inset-x-0 bottom-0 aspect-square w-full border-0 md:top-0 md:aspect-auto md:h-full"
+          className="pointer-events-none absolute inset-0 h-full w-full border-0"
           onLoad={() => {
             const box = root.current!.getBoundingClientRect();
             if (box.top < window.innerHeight * 0.6 && box.bottom > 0 && !started.current) {

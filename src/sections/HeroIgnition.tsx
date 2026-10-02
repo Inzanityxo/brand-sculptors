@@ -184,7 +184,7 @@ export function HeroIgnition() {
       </div>
 
       {/* final state */}
-      <div className="relative mx-auto grid w-full max-w-[1320px] items-center gap-14 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10 lg:py-24">
+      <div className="relative mx-auto grid w-full max-w-[1320px] items-center gap-14 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1fr_1.05fr] lg:gap-12 lg:py-24">
         <div>
           <PortraitChip className="ig-final intro-hide mb-8 lg:hidden" />
           <p className="ig-eyebrow ig-final intro-hide eyebrow inline-block">{en.hero.eyebrow}</p>
@@ -199,7 +199,7 @@ export function HeroIgnition() {
           <p className="ig-final ig-rise intro-hide lede mt-8 max-w-[36rem]">{en.hero.sub}</p>
           <HeroButtons className="ig-final ig-rise intro-hide mt-10" />
         </div>
-        <div className="ig-final intro-hide px-6 pb-8 pt-8 sm:px-14 lg:px-4">
+        <div className="ig-final intro-hide px-2 pb-20 pt-6 sm:px-14 sm:pt-20 lg:px-6">
           <HeroVisual />
         </div>
       </div>

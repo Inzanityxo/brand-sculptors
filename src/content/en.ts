@@ -36,6 +36,12 @@ export const en = {
     portraitName: "Marco Bednarz",
     portraitLine: "I run my own marketing on this system every day.",
     stageAlt: "Marco Bednarz speaking on stage in front of an audience",
+    film: {
+      play: "Watch the film",
+      length: "1:12",
+      label: "Play the Brand Sculptors film, 72 seconds, with sound",
+      poster: "Marco on stage next to his AI operating system",
+    },
     visual: {
       command: "Turn yesterday's call into Thursday's newsletter",
       draft: "Draft ready, written in your voice",
